@@ -10,7 +10,7 @@ Soundry is a static single-page website built with **Eleventy** and **Bun**, hos
 
 1. **🎯 Impact/Grants Marketing** - Showcase community impact with anecdotes and submit new stories via Netlify form
 2. **📅 Event Calendar** - Human-writable event calendar with Google Calendar/Outlook integration via ICS export
-3. **📧 Email Engagement** - Email list signup via Netlify forms (ready for Sendgrid integration)
+3. **📧 Email Engagement** - Email list signup with Sendgrid integration (via Netlify Functions)
 4. **📸 Instagram Presence** - Embedded Instagram feed from @omahasoundry
 
 ## Project Structure
@@ -20,12 +20,15 @@ soundry/
 ├── src/                           # Source files
 │   ├── index.html                # Main single-page site (Liquid template)
 │   ├── js/
-│   │   └── main.js              # Dynamic event rendering
+│   │   └── main.js              # Dynamic event rendering + email form handling
 │   ├── css/
 │   │   └── style.css            # Tailwind CSS + custom styles
 │   └── _data/
 │       ├── events.yml           # Human-writable event calendar
 │       └── events.js            # YAML parser for events
+├── netlify/
+│   └── functions/
+│       └── subscribe.js         # Netlify Function for Sendgrid integration
 ├── .eleventy.js                 # Eleventy config with ICS generation hook
 ├── netlify.toml                 # Netlify build and form configuration
 ├── package.json                 # Dependencies (Eleventy, js-yaml)
@@ -126,16 +129,112 @@ Two forms are pre-configured:
 
 **Spam Protection:** Both forms use honeypot (`netlify-honeypot`) protection
 
-### 5. Configure Sendgrid Integration (Optional)
+### 5. Configure Sendgrid Integration
 
-The email form is ready for Sendgrid integration:
+The email form now includes **Sendgrid integration via Netlify Functions**.
 
+#### Prerequisites
+1. **Sendgrid Account:** Create a free account at https://sendgrid.com
+2. **Sendgrid API Key:** Generate an API key in Sendgrid dashboard
+3. **Netlify Environment Variable:** Set `NETLIFY_EMAILS_PROVIDER_API_KEY` to your Sendgrid API key
+
+#### Setup Steps
+
+**Step 1: Get Sendgrid API Key**
+1. Go to https://app.sendgrid.com/settings/api_keys
+2. Click "Create API Key"
+3. Name it something like "Soundry Email Signup"
+4. Copy the key (you'll only see it once)
+
+**Step 2: Add to Netlify**
+1. Go to https://app.netlify.com/sites/omahasoundry/settings/env
+2. Click "Add a variable" under Environment variables
+3. Set:
+   - **Key:** `NETLIFY_EMAILS_PROVIDER_API_KEY`
+   - **Value:** (paste your Sendgrid API key)
+4. Save
+
+**Step 3: Deploy**
+The Netlify Function is already configured at `netlify/functions/subscribe.js`. On your next deploy (or redeploy), the function will be available at `/.netlify/functions/subscribe`.
+
+#### How It Works
+
+**Email Form Flow:**
+1. User fills out email form in "Stay Connected" section
+2. Form submits to `/.netlify/functions/subscribe` (POST request)
+3. Function validates email and checks honeypot spam protection
+4. Function calls Sendgrid API to add contact to marketing list
+5. User sees success/error message
+
+**Form Fields:**
+- `email` (required) - Email address to subscribe
+- `name` (optional) - Contact name (split into first/last)
+- `_website` (honeypot) - Empty field for spam protection
+
+**Response Handling:**
+- **Success (200):** "Successfully subscribed to our mailing list!"
+- **Invalid Email (400):** "Invalid subscription request"
+- **API Error (500):** "Failed to subscribe. Please try again."
+
+#### Sendgrid Configuration
+
+**Create a Marketing List (Optional):**
+1. Go to Sendgrid > Marketing > Contacts > Lists
+2. Click "Create List"
+3. Name it "Soundry Email Subscribers"
+4. Note: The current function adds contacts to the default list
+5. To use a specific list, modify the function to include the list ID
+
+**View Subscriptions:**
+1. Go to Sendgrid > Marketing > Contacts
+2. Filter by tags or custom fields to see Soundry signups
+3. Manage unsubscribes and email preferences here
+
+#### Testing the Integration
+
+**Local Testing:**
 ```bash
-# Create a Netlify function at netlify/functions/subscribe.js
-# This function will receive form submissions and send to Sendgrid
+# Start dev server
+bun run serve
+
+# Test the function (requires NETLIFY_EMAILS_PROVIDER_API_KEY env var locally)
+# You can test by filling out the form on http://localhost:8080
 ```
 
-See: https://docs.netlify.com/extend/install-and-use/setup-guides/email-integration/
+**Live Testing:**
+1. Ensure env var is set on Netlify
+2. Visit the deployed site
+3. Fill out email form in "Stay Connected" section
+4. Should see success message
+5. Check Sendgrid dashboard to confirm contact was added
+
+#### Troubleshooting
+
+**Function not found (404):**
+- Ensure `netlify/functions/subscribe.js` exists
+- Redeploy the site to Netlify
+
+**Invalid API Key error:**
+- Check that `NETLIFY_EMAILS_PROVIDER_API_KEY` is set correctly in Netlify
+- Verify the key hasn't been revoked in Sendgrid dashboard
+
+**Email not added:**
+- Check browser console for error messages
+- Review Netlify function logs: https://app.netlify.com/sites/omahasoundry/functions
+- Verify email format is valid (contains @)
+
+#### Function Code
+
+The function is located at `netlify/functions/subscribe.js` and:
+- Handles form POST requests
+- Validates email format
+- Implements honeypot spam protection
+- Calls Sendgrid Marketing Contacts API v3
+- Returns proper HTTP status codes
+- Includes error handling and logging
+
+Reference: https://docs.netlify.com/extend/install-and-use/setup-guides/email-integration/
+
 
 ### 6. Styling with Tailwind
 
