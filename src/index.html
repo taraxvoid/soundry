@@ -142,10 +142,11 @@
         </div>
       </div>
       
+<!--       meh buttons
       <div class="flex flex-col sm:flex-row gap-4">
         <a href="#calendar" class="btn-primary text-center py-3 px-8">View Events</a>
         <a href="#signup" class="btn-secondary text-center py-3 px-8">Join Mailing List</a>
-      </div>
+      </div> -->
     </div>
   </section>
 
@@ -211,12 +212,8 @@
   <!-- Calendar Section -->
   <section id="calendar" class="section" style="background: linear-gradient(135deg, #f5f1eb 0%, #e8e2d8 100%);">
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
-      <h2 class="section-title">Upcoming Events</h2>
-      
-      <div class="mb-8 pb-8 border-b border-gray-300">
-        <p class="text-lg mb-6" style="color: var(--black);">
-          Join us for upcoming workshops, collaborations, and community gatherings. All times are in Central Time (CT).
-        </p>
+      <p class="text-xl mb-8 max-w-3xl leading-relaxed">
+      Upcoming Events</p>
         <a href="/calendar.ics" class="inline-flex items-center font-semibold transition" style="color: var(--red-dark); text-decoration: underline;">
           📅 Add to Calendar (downloads an .ics file)
         </a>
@@ -233,18 +230,14 @@
   <section id="signup" class="section" style="background: linear-gradient(135deg, var(--cream) 0%, #f0ebe5 100%);">
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <div class="max-w-2xl">
-        <h2 class="section-title">Stay Connected</h2>
-        
-        <p class="text-lg mb-8" style="color: var(--black);">
-          Subscribe to our email list to receive updates about events, workshops, and community initiatives.
-        </p>
-
+<p class="text-xl mb-8 max-w-3xl leading-relaxed">
+      Email List Signup</p>        
         <form id="email-signup-form" class="email-signup-form">
           <!-- Honeypot spam protection: hidden field -->
           <input type="hidden" name="_website" value="">
           
           <div class="mb-6">
-            <label for="signup-email" class="block text-sm font-medium mb-2" style="color: var(--black);">Email Address *</label>
+            <label for="signup-email" class="block text-sm font-medium mb-2" style="color: var(--black);">Your Email *</label>
             <input 
               type="email" 
               id="signup-email" 
@@ -257,7 +250,7 @@
           </div>
 
           <div class="mb-6">
-            <label for="signup-name" class="block text-sm font-medium mb-2" style="color: var(--black);">Name (optional)</label>
+            <label for="signup-name" class="block text-sm font-medium mb-2" style="color: var(--black);">Your Name (optional)</label>
             <input 
               type="text" 
               id="signup-name" 
@@ -285,11 +278,8 @@
   <!-- Instagram Section -->
   <section id="instagram" class="section" style="background: linear-gradient(135deg, #f5f1eb 0%, #e8e2d8 100%);">
     <div class="max-w-6xl mx-auto px-6 sm:px-8 text-center">
-      <h2 class="section-title">Follow Us on Instagram</h2>
-      
-      <p class="text-lg mb-12" style="color: var(--black);">
-        See recent photos, stories, and updates from our community.
-      </p>
+      <p class="text-xl mb-8 max-w-3xl leading-relaxed">
+      Instant Gram</p>
 
       <!-- Instagram Feed Embed -->
       <div class="flex justify-center">
@@ -316,9 +306,9 @@
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <div class="max-w-2xl">
         
-        <h3 class="text-2xl font-bold mb-8" style="color: var(--black);">Share Your Story</h3>
+        <h3 class="text-2xl font-bold mb-8" style="color: var(--black);">Testimonials</h3>
         <p class="mb-6" style="color: var(--black);">
-          Have you participated in Soundry or been impacted by our work? We'd love to hear your anecdote or story of impact. Your feedback helps us demonstrate value to funders and partners.
+          How has Soundry affected you?
         </p>
         <form name="testimonials" method="POST" netlify netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="testimonials">
@@ -332,7 +322,7 @@
               name="name" 
               class="w-full px-4 py-2 rounded border-2"
               style="border-color: var(--red-dark); background: white;"
-              placeholder="Your name or 'Anonymous'"
+              placeholder="Your name"
             >
           </div>
 
@@ -349,7 +339,7 @@
           </div>
 
           <div class="mb-6">
-            <label for="story" class="block text-sm font-medium mb-2" style="color: var(--black);">Your Story or Anecdote *</label>
+            <label for="story" class="block text-sm font-medium mb-2" style="color: var(--black);">Your Story *</label>
             <textarea 
               id="story" 
               name="story" 
@@ -357,12 +347,12 @@
               rows="6"
               class="w-full px-4 py-2 rounded border-2"
               style="border-color: var(--red-dark); background: white;"
-              placeholder="Share how Soundry impacted you or your community..."
+              placeholder="e.g. Soundry helped me grow my creative practice in a safe container to experiment"
             ></textarea>
           </div>
 
           <button type="submit" class="w-full btn-primary text-lg">
-            Submit Your Story
+            Tell Us
           </button>
         </form>
       </div>
