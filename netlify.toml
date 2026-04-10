@@ -4,6 +4,8 @@
   functions = "netlify/functions"
   publish = "_site"
 
+[[plugins]]
+  package = "@netlify/plugin-emails"
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
   #[[redirects]]
