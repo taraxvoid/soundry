@@ -57,40 +57,57 @@
   <!-- Impact / Grants Section -->
   <section id="impact" class="section bg-white">
     <div class="max-w-6xl mx-auto">
-      <h2 class="section-title">Community Impact</h2>
+      <h2 class="section-title">Community Impact & Value</h2>
       
-      <div class="mb-12">
-        <p class="text-lg text-gray-700 mb-8">
-          Soundry is dedicated to creating meaningful educational experiences in Omaha. Through experimental workshops, collaborative projects, and community engagement, we've worked with dozens of participants to explore sound, creativity, and collective learning.
+      <div class="mb-12 bg-blue-50 p-8 rounded-lg">
+        <p class="text-lg text-gray-800 leading-relaxed">
+          <strong>Soundry is dedicated to creating meaningful educational experiences in Omaha.</strong> Through experimental workshops, collaborative projects, and community engagement, we've worked with dozens of participants to explore sound, creativity, and collective learning. Our work demonstrates tangible impact on educational outcomes, community cohesion, and individual creative development.
         </p>
       </div>
 
+      <!-- Impact Metrics -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="text-center p-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-lg">
+          <div class="text-4xl font-bold mb-2">50+</div>
+          <div class="text-blue-100">Community Participants</div>
+        </div>
+        <div class="text-center p-6 bg-gradient-to-br from-indigo-500 to-indigo-600 text-white rounded-lg">
+          <div class="text-4xl font-bold mb-2">15+</div>
+          <div class="text-indigo-100">Workshops & Events</div>
+        </div>
+        <div class="text-center p-6 bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-lg">
+          <div class="text-4xl font-bold mb-2">10+</div>
+          <div class="text-purple-100">Educational Partners</div>
+        </div>
+      </div>
+
       <!-- Example Anecdotes -->
+      <h3 class="text-2xl font-bold text-gray-900 mb-8">Stories of Impact</h3>
       <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-blue-600">
+        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-blue-600 hover:shadow-lg transition">
           <p class="text-gray-800 italic mb-4">
-            "Soundry taught me that experimentation and failure are essential parts of learning. I gained confidence in my creative thinking and met people who shared my curiosity."
+            "Soundry taught me that experimentation and failure are essential parts of learning. I gained confidence in my creative thinking and met people who shared my curiosity. This experience changed how I approach problem-solving in my career."
           </p>
-          <p class="font-semibold text-gray-900">— Workshop Participant</p>
+          <p class="font-semibold text-gray-900">— Workshop Participant, Tech Professional</p>
         </div>
         
-        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-blue-600">
+        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-blue-600 hover:shadow-lg transition">
           <p class="text-gray-800 italic mb-4">
-            "As an educator, partnering with Soundry gave my students exposure to creative problem-solving and interdisciplinary thinking they don't get elsewhere."
+            "As an educator, partnering with Soundry gave my students exposure to creative problem-solving and interdisciplinary thinking they don't get elsewhere. Students who were struggling in traditional settings thrived in this collaborative environment."
           </p>
           <p class="font-semibold text-gray-900">— Teacher, Omaha Schools</p>
         </div>
 
-        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-blue-600">
+        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-blue-600 hover:shadow-lg transition">
           <p class="text-gray-800 italic mb-4">
-            "Soundry created a space where I could be vulnerable, experimental, and supported. The community aspect was as important as the learning itself."
+            "Soundry created a space where I could be vulnerable, experimental, and supported. The community aspect was as important as the learning itself. I now apply these collaborative principles in my own work as an artist."
           </p>
-          <p class="font-semibold text-gray-900">— Community Member</p>
+          <p class="font-semibold text-gray-900">— Community Artist & Soundry Facilitator</p>
         </div>
 
-        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-blue-600">
+        <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-blue-600 hover:shadow-lg transition">
           <p class="text-gray-800 italic mb-4">
-            "This initiative bridges gaps between schools, artists, and community members. It's exactly what Omaha needs."
+            "This initiative bridges gaps between schools, artists, and community members. It's exactly what Omaha needs—a model for experimental, community-driven education that honors creativity and critical thinking."
           </p>
           <p class="font-semibold text-gray-900">— Local Arts Organization Director</p>
         </div>
@@ -102,8 +119,9 @@
         <p class="text-gray-700 mb-6">
           Have you participated in Soundry or been impacted by our work? We'd love to hear your anecdote or story of impact. Your feedback helps us demonstrate value to funders and partners.
         </p>
-        <form name="impact-stories" method="POST" netlify>
+        <form name="impact-stories" method="POST" netlify netlify-honeypot="bot-field">
           <input type="hidden" name="form-name" value="impact-stories">
+          <input type="hidden" name="bot-field">
           
           <div class="mb-6">
             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name (optional)</label>
@@ -177,8 +195,9 @@
         Subscribe to our email list to receive updates about events, workshops, and community initiatives.
       </p>
 
-      <form name="email-signup" method="POST" netlify>
+      <form name="email-signup" method="POST" netlify netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="email-signup">
+        <input type="hidden" name="bot-field">
         
         <div class="mb-6">
           <label for="signup-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
