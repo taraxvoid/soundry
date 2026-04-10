@@ -14,36 +14,36 @@ document.addEventListener('DOMContentLoaded', async function() {
 
       // Render each event
       eventsList.innerHTML = events.map(event => `
-        <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition">
-          <div class="flex justify-between items-start mb-3">
-            <h3 class="text-xl font-bold text-gray-900">${escapeHtml(event.title)}</h3>
-            <span class="text-sm bg-blue-100 text-blue-700 px-3 py-1 rounded">
+        <div style="background: white; padding: 24px; border-radius: 8px; border-left: 4px solid #8B2C2C; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s; hover: {box-shadow: 0 4px 12px rgba(139,44,44,0.2)}">
+          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
+            <h3 style="font-size: 20px; font-weight: bold; color: #1a1a1a; margin: 0;">${escapeHtml(event.title)}</h3>
+            <span style="font-size: 12px; background: #8B2C2C; color: white; padding: 4px 12px; border-radius: 4px; white-space: nowrap; margin-left: 8px;">
               ${formatDate(event.date)}
             </span>
           </div>
           
-          <div class="space-y-2 text-gray-700 mb-4">
+          <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; color: #333;">
             ${event.time ? `<div><strong>⏰ Time:</strong> ${escapeHtml(event.time)}</div>` : ''}
             ${event.location ? `<div><strong>📍 Location:</strong> ${escapeHtml(event.location)}</div>` : ''}
           </div>
 
-          ${event.description ? `<p class="text-gray-600 mb-4">${escapeHtml(event.description)}</p>` : ''}
+          ${event.description ? `<p style="color: #555; margin: 12px 0; line-height: 1.5;">${escapeHtml(event.description)}</p>` : ''}
 
           ${event.rsvp_link ? `
-            <a href="${escapeHtml(event.rsvp_link)}" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-600 hover:text-blue-700 font-semibold">
+            <a href="${escapeHtml(event.rsvp_link)}" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #8B2C2C; font-weight: 600; text-decoration: underline; transition: all 0.3s;">
               Learn More / RSVP →
             </a>
           ` : ''}
         </div>
       `).join('');
     } else if (eventsList && events.length === 0) {
-      eventsList.innerHTML = '<div class="col-span-2 text-center text-gray-500 italic py-8">No upcoming events scheduled yet. Check back soon!</div>';
+      eventsList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #999; font-style: italic; padding: 32px 0;">No upcoming events scheduled yet. Check back soon!</div>';
     }
   } catch (error) {
     console.warn('Could not load events:', error);
     const eventsList = document.getElementById('events-list');
     if (eventsList) {
-      eventsList.innerHTML = '<div class="col-span-2 text-center text-gray-500 italic py-8">Events loading...</div>';
+      eventsList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #999; font-style: italic; padding: 32px 0;">Events loading...</div>';
     }
   }
 

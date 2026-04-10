@@ -3,69 +3,153 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soundry — Omaha Experimental Education</title>
+  <title>Soundry — Omaha Experimental Music Education</title>
   <meta name="description" content="Soundry is experimental community-driven education in Omaha, focused on sound, collaboration, and creative inquiry.">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html {
       scroll-behavior: smooth;
     }
+    
+    /* Dark red Soviet toy piano theme */
+    :root {
+      --red-dark: #8B2C2C;
+      --red-medium: #A73C3C;
+      --red-light: #C75555;
+      --black: #1a1a1a;
+      --white: #fafafa;
+      --cream: #f5f1eb;
+    }
+    
+    body {
+      background: linear-gradient(135deg, var(--cream) 0%, #f0ebe5 100%);
+    }
+    
     .btn-primary {
-      @apply px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors;
+      @apply px-6 py-3 text-white rounded font-semibold transition-all;
+      background-color: var(--red-dark);
     }
+    .btn-primary:hover {
+      background-color: var(--red-light);
+      transform: scale(1.05);
+    }
+    
     .btn-secondary {
-      @apply px-6 py-3 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gray-300 transition-colors;
+      @apply px-6 py-3 rounded font-semibold transition-all border-2;
+      color: var(--black);
+      background-color: var(--cream);
+      border-color: var(--red-dark);
     }
+    .btn-secondary:hover {
+      background-color: var(--red-dark);
+      color: var(--white);
+    }
+    
     .section {
       @apply py-16 px-4 sm:px-6 lg:px-8;
     }
     .section-title {
-      @apply text-4xl sm:text-5xl font-bold mb-12 text-gray-900;
+      @apply text-4xl sm:text-5xl font-bold mb-12;
+      color: var(--black);
+    }
+    
+    /* Piano key navbar pattern */
+    .piano-keys {
+      display: flex;
+      gap: 2px;
+      height: 12px;
+      background: var(--black);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .piano-key {
+      flex: 1;
+      background: var(--white);
+      border-right: 1px solid var(--black);
+    }
+    .piano-key:nth-child(odd) {
+      background: var(--black);
+    }
+    
+    /* Custom accent colors */
+    .accent-red {
+      color: var(--red-dark);
+    }
+    .bg-accent {
+      background-color: var(--red-dark);
+      color: var(--white);
+    }
+    .border-accent {
+      border-color: var(--red-dark);
     }
   </style>
 </head>
 <body class="bg-white">
   <!-- Navigation -->
-  <nav class="sticky top-0 bg-white shadow-sm z-50">
+  <nav class="sticky top-0 z-50" style="background-color: var(--red-dark); box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+    <!-- Piano keys at the top -->
+    <div class="piano-keys" style="height: 8px;"></div>
+    
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
-        <a href="#home" class="text-2xl font-bold text-gray-900">Soundry</a>
+        <a href="#home" class="text-2xl font-bold text-white">♪ Soundry</a>
         <div class="hidden md:flex space-x-8">
-          <a href="#impact" class="text-gray-700 hover:text-blue-600 transition">Impact</a>
-          <a href="#calendar" class="text-gray-700 hover:text-blue-600 transition">Calendar</a>
-          <a href="#signup" class="text-gray-700 hover:text-blue-600 transition">Email</a>
-          <a href="#instagram" class="text-gray-700 hover:text-blue-600 transition">Instagram</a>
+          <a href="#calendar" class="text-white hover:text-yellow-100 transition">Calendar</a>
+          <a href="#signup" class="text-white hover:text-yellow-100 transition">Email List</a>
+          <a href="#instagram" class="text-white hover:text-yellow-100 transition">Instagram</a>
+          <a href="#testimonials" class="text-white hover:text-yellow-100 transition">Testimonials</a>
         </div>
       </div>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <section id="home" class="section bg-gradient-to-br from-blue-50 to-indigo-100">
+  <section id="home" class="section" style="background: linear-gradient(135deg, #a73c3c 0%, #8B2C2C 100%); color: white;">
     <div class="max-w-6xl mx-auto">
-      <h1 class="text-5xl sm:text-6xl font-bold text-gray-900 mb-6">Soundry</h1>
-      <p class="text-xl text-gray-700 mb-8 max-w-2xl">
-        Experimental education rooted in community, collaboration, and creative inquiry. Soundry brings people together through sound, curiosity, and shared learning in Omaha.
+      <h1 class="text-5xl sm:text-6xl font-bold mb-8">Experimental Music Education</h1>
+      <p class="text-xl mb-8 max-w-3xl leading-relaxed">
+        Pioneering sound-focused workshops throughout the Midwest, emphasizing the significance of playing, listening, creating, and collaborative work.
       </p>
+      
+      <div class="grid sm:grid-cols-2 gap-6 mb-8">
+        <div class="bg-black bg-opacity-30 p-6 rounded border-l-4" style="border-left-color: white;">
+          <strong class="block mb-2">Soundscaping</strong>
+          <p>Engages participants in creative music composition, constructing unique soundscapes using both traditional and DIY instruments.</p>
+        </div>
+
+        <div class="bg-black bg-opacity-30 p-6 rounded border-l-4" style="border-left-color: white;">
+          <strong class="block mb-2">Instrument Building</strong>
+          <p>Explores hands-on instrument creation, with past projects including didgeridoos, thumb pianos, rain sticks, and various world percussion instruments.</p>
+        </div>
+
+        <div class="bg-black bg-opacity-30 p-6 rounded border-l-4" style="border-left-color: white;">
+          <strong class="block mb-2">Deep Listening</strong>
+          <p>Introduces intensive listening practices, fostering heightened auditory awareness. Upper-level workshops incorporate body work and explore dreaming practices.</p>
+        </div>
+
+        <div class="bg-black bg-opacity-30 p-6 rounded border-l-4" style="border-left-color: white;">
+          <strong class="block mb-2">DIY Music Technology</strong>
+          <p>Provides accessible workshops on music technology, often with a do-it-yourself approach, supporting participants in navigating and utilizing technology creatively.</p>
+        </div>
+      </div>
+      
       <div class="flex flex-col sm:flex-row gap-4">
         <a href="#calendar" class="btn-primary text-center">View Events</a>
-        <a href="#impact" class="btn-secondary text-center">See Our Impact</a>
+        <a href="#signup" class="btn-secondary text-center">Join Mailing List</a>
       </div>
     </div>
   </section>
 
-  <!-- Impact / Grants Section -->
+  <!-- boilerplate for impact/grants- can be updated later 
+
   <section id="impact" class="section bg-white">
     <div class="max-w-6xl mx-auto">
-      <h2 class="section-title">Community Impact & Value</h2>
       
       <div class="mb-12 bg-blue-50 p-8 rounded-lg">
         <p class="text-lg text-gray-800 leading-relaxed">
-          <strong>Soundry is dedicated to creating meaningful educational experiences in Omaha.</strong> Through experimental workshops, collaborative projects, and community engagement, we've worked with dozens of participants to explore sound, creativity, and collective learning. Our work demonstrates tangible impact on educational outcomes, community cohesion, and individual creative development.
-        </p>
+        Pioneering sound-focused workshops throughout the Midwest, emphasizing the significance of playing, listening, creating, and collaborative work.        </p>
       </div>
 
-      <!-- Impact Metrics -->
       <div class="grid md:grid-cols-3 gap-6 mb-12">
         <div class="text-center p-6 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-lg">
           <div class="text-4xl font-bold mb-2">50+</div>
@@ -81,7 +165,6 @@
         </div>
       </div>
 
-      <!-- Example Anecdotes -->
       <h3 class="text-2xl font-bold text-gray-900 mb-8">Stories of Impact</h3>
       <div class="grid md:grid-cols-2 gap-8 mb-12">
         <div class="bg-gray-50 p-8 rounded-lg border-l-4 border-blue-600 hover:shadow-lg transition">
@@ -112,86 +195,37 @@
           <p class="font-semibold text-gray-900">— Local Arts Organization Director</p>
         </div>
       </div>
+    -->
 
-      <!-- Submit Your Story -->
-      <div class="bg-blue-50 p-8 rounded-lg border border-blue-200">
-        <h3 class="text-2xl font-bold text-gray-900 mb-4">Share Your Story</h3>
-        <p class="text-gray-700 mb-6">
-          Have you participated in Soundry or been impacted by our work? We'd love to hear your anecdote or story of impact. Your feedback helps us demonstrate value to funders and partners.
-        </p>
-        <form name="impact-stories" method="POST" netlify netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="impact-stories">
-          <input type="hidden" name="bot-field">
-          
-          <div class="mb-6">
-            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Name (optional)</label>
-            <input 
-              type="text" 
-              id="name" 
-              name="name" 
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-              placeholder="Your name or 'Anonymous'"
-            >
-          </div>
-
-          <div class="mb-6">
-            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email (optional)</label>
-            <input 
-              type="email" 
-              id="email" 
-              name="email" 
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-              placeholder="your@email.com"
-            >
-          </div>
-
-          <div class="mb-6">
-            <label for="story" class="block text-sm font-medium text-gray-700 mb-2">Your Story or Anecdote *</label>
-            <textarea 
-              id="story" 
-              name="story" 
-              required
-              rows="6"
-              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
-              placeholder="Share how Soundry impacted you or your community..."
-            ></textarea>
-          </div>
-
-          <button type="submit" class="btn-primary">
-            Submit Your Story
-          </button>
-        </form>
-      </div>
-    </div>
   </section>
 
   <!-- Calendar Section -->
-  <section id="calendar" class="section bg-gray-50">
+  <section id="calendar" class="section" style="background: linear-gradient(135deg, #f5f1eb 0%, #e8e2d8 100%);">
     <div class="max-w-6xl mx-auto">
       <h2 class="section-title">Upcoming Events</h2>
       
       <div class="mb-8">
-        <p class="text-lg text-gray-700 mb-6">
+        <p class="text-lg mb-6" style="color: var(--black);">
           Join us for upcoming workshops, collaborations, and community gatherings. All times are in Central Time (CT).
         </p>
-        <a href="/calendar.ics" class="inline-flex items-center text-blue-600 hover:text-blue-700 font-semibold">
+        <a href="/calendar.ics" class="inline-flex items-center font-semibold transition" style="color: var(--red-dark); text-decoration: underline;">
           📅 Add to Calendar (downloads an .ics file)
         </a>
       </div>
 
       <div id="events-list" class="grid md:grid-cols-2 gap-6">
         <!-- Events will be rendered here by JavaScript -->
-        <div class="text-gray-500 italic">Loading events...</div>
-      </div>`
+        <div class="italic" style="color: #999;">Loading events...</div>
+      </div>
     </div>
   </section>
 
   <!-- Email Signup Section -->
-  <section id="signup" class="section bg-white">
+  <section id="signup" class="section" style="background: linear-gradient(135deg, var(--cream) 0%, #f0ebe5 100%);">
     <div class="max-w-2xl mx-auto">
       <h2 class="section-title">Stay Connected</h2>
       
-      <p class="text-lg text-gray-700 mb-8">
+      <p class="text-lg mb-8" style="color: var(--black);">
         Subscribe to our email list to receive updates about events, workshops, and community initiatives.
       </p>
 
@@ -200,24 +234,26 @@
         <input type="hidden" name="_website" value="">
         
         <div class="mb-6">
-          <label for="signup-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
+          <label for="signup-email" class="block text-sm font-medium mb-2" style="color: var(--black);">Email Address *</label>
           <input 
             type="email" 
             id="signup-email" 
             name="email" 
             required
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            class="w-full px-4 py-3 rounded border-2"
+            style="border-color: var(--red-dark); background: white;"
             placeholder="your@email.com"
           >
         </div>
 
         <div class="mb-6">
-          <label for="signup-name" class="block text-sm font-medium text-gray-700 mb-2">Name (optional)</label>
+          <label for="signup-name" class="block text-sm font-medium mb-2" style="color: var(--black);">Name (optional)</label>
           <input 
             type="text" 
             id="signup-name" 
             name="name" 
-            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+            class="w-full px-4 py-3 rounded border-2"
+            style="border-color: var(--red-dark); background: white;"
             placeholder="Your name"
           >
         </div>
@@ -229,18 +265,18 @@
         </button>
       </form>
 
-      <p class="text-sm text-gray-500 mt-4">
+      <p class="text-sm mt-4" style="color: #888;">
         We respect your privacy. Unsubscribe anytime.
       </p>
     </div>
   </section>
 
   <!-- Instagram Section -->
-  <section id="instagram" class="section bg-gray-50">
+  <section id="instagram" class="section" style="background: linear-gradient(135deg, #f5f1eb 0%, #e8e2d8 100%);">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="section-title">Follow Us on Instagram</h2>
       
-      <p class="text-lg text-gray-700 mb-12">
+      <p class="text-lg mb-12" style="color: var(--black);">
         See recent photos, stories, and updates from our community.
       </p>
 
@@ -257,39 +293,95 @@
         ></iframe>
       </div>
 
-      <p class="text-sm text-gray-500 mt-8">
-        <a href="https://www.instagram.com/omahasoundry/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-700">
+      <p class="text-sm mt-8">
+        <a href="https://www.instagram.com/omahasoundry/" target="_blank" rel="noopener noreferrer" class="font-semibold transition" style="color: var(--red-dark); text-decoration: underline;">
           Visit us on Instagram →
         </a>
       </p>
     </div>
   </section>
 
+  <section id="testimonials" class="section" style="background: linear-gradient(135deg, var(--cream) 0%, #f0ebe5 100%);">
+    
+    <!-- Submit Your Story -->
+    <div class="max-w-2xl mx-auto">
+        
+        <h3 class="text-2xl font-bold mb-8" style="color: var(--black);">Share Your Story</h3>
+        <p class="mb-6" style="color: var(--black);">
+          Have you participated in Soundry or been impacted by our work? We'd love to hear your anecdote or story of impact. Your feedback helps us demonstrate value to funders and partners.
+        </p>
+        <form name="testimonials" method="POST" netlify netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="testimonials">
+          <input type="hidden" name="bot-field">
+          
+          <div class="mb-6">
+            <label for="name" class="block text-sm font-medium mb-2" style="color: var(--black);">Name (optional)</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              class="w-full px-4 py-2 rounded border-2"
+              style="border-color: var(--red-dark); background: white;"
+              placeholder="Your name or 'Anonymous'"
+            >
+          </div>
+
+          <div class="mb-6">
+            <label for="email" class="block text-sm font-medium mb-2" style="color: var(--black);">Email (optional)</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="w-full px-4 py-2 rounded border-2"
+              style="border-color: var(--red-dark); background: white;"
+              placeholder="your@email.com"
+            >
+          </div>
+
+          <div class="mb-6">
+            <label for="story" class="block text-sm font-medium mb-2" style="color: var(--black);">Your Story or Anecdote *</label>
+            <textarea 
+              id="story" 
+              name="story" 
+              required
+              rows="6"
+              class="w-full px-4 py-2 rounded border-2"
+              style="border-color: var(--red-dark); background: white;"
+              placeholder="Share how Soundry impacted you or your community..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="w-full btn-primary text-lg">
+            Submit Your Story
+          </button>
+        </form>
+      </div>
+    </div>
+
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-300 py-8">
+  <footer style="background: var(--black); color: #ccc;" class="py-8">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid md:grid-cols-3 gap-8 mb-8">
         <div>
-          <h3 class="text-white font-bold mb-4">Soundry</h3>
+          <h3 class="text-white font-bold mb-4">♪ Soundry</h3>
           <p class="text-sm">Experimental education rooted in community and creative inquiry.</p>
         </div>
         <div>
           <h3 class="text-white font-bold mb-4">Quick Links</h3>
           <ul class="text-sm space-y-2">
-            <li><a href="#impact" class="hover:text-white">Impact</a></li>
-            <li><a href="#calendar" class="hover:text-white">Calendar</a></li>
-            <li><a href="#signup" class="hover:text-white">Subscribe</a></li>
+            <li><a href="#calendar" class="hover:text-white transition">Calendar</a></li>
+            <li><a href="#signup" class="hover:text-white transition">Email List</a></li>
+            <li><a href="#testimonials" class="hover:text-white transition">Testimonials</a></li>
           </ul>
         </div>
         <div>
           <h3 class="text-white font-bold mb-4">Connect</h3>
           <ul class="text-sm space-y-2">
-            <li><a href="https://www.instagram.com/omahasoundry/" target="_blank" rel="noopener noreferrer" class="hover:text-white">Instagram</a></li>
-            <li><a href="mailto:contact@soundry.local" class="hover:text-white">Email</a></li>
+            <li><a href="https://www.instagram.com/omahasoundry/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Instagram</a></li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-gray-800 pt-8 text-center text-sm">
+      <div class="border-t border-gray-700 pt-8 text-center text-sm">
         <p>&copy; 2026 Soundry. All rights reserved.</p>
       </div>
     </div>
