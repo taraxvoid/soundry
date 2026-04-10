@@ -1,0 +1,31 @@
+---
+layout: null
+permalink: /calendar.ics
+---
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Soundry//Omaha Experimental Education//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Soundry Events
+X-WR-TIMEZONE:America/Chicago
+X-WR-CALDESC:Upcoming events from Soundry - Omaha Experimental Education
+{%- for event in events.events %}
+BEGIN:VEVENT
+UID:{{ event.title | slugify }}@soundry.local
+DTSTAMP:{{ "now" | date: "%Y%m%dT%H%M%SZ" }}
+DTSTART:{{ event.date }}T000000Z
+SUMMARY:{{ event.title }}
+{%- if event.time %}
+DESCRIPTION:{{ event.time }}{% if event.location %} at {{ event.location }}{% endif %}
+{%- else %}
+DESCRIPTION:{{ event.description }}
+{%- endif %}
+{%- if event.location %}
+LOCATION:{{ event.location }}
+{%- endif %}
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+{%- endfor %}
+END:VCALENDAR
