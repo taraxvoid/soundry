@@ -1,0 +1,49 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Soundry//Omaha Experimental Education//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Soundry Events
+X-WR-TIMEZONE:America/Chicago
+X-WR-CALDESC:Upcoming events from Soundry - Omaha Experimental Education
+BEGIN:VEVENT
+UID:sound-exploration-workshop@soundry.local
+DTSTAMP:20260410T210044Z
+DTSTART:20260425T000000Z
+SUMMARY:Sound Exploration Workshop
+DESCRIPTION:6:00 PM - 8:00 PM at Omaha Arts Center
+LOCATION:Omaha Arts Center
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:community-listening-session@soundry.local
+DTSTAMP:20260410T210044Z
+DTSTART:20260510T000000Z
+SUMMARY:Community Listening Session
+DESCRIPTION:3:00 PM - 4:30 PM at Creighton University
+LOCATION:Creighton University
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:experimental-education-panel@soundry.local
+DTSTAMP:20260410T210044Z
+DTSTART:20260520T000000Z
+SUMMARY:Experimental Education Panel
+DESCRIPTION:5:30 PM - 7:00 PM at Dundee Neighborhood (TBD)
+LOCATION:Dundee Neighborhood (TBD)
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+BEGIN:VEVENT
+UID:summer-sound-lab@soundry.local
+DTSTAMP:20260410T210044Z
+DTSTART:20260615T000000Z
+SUMMARY:Summer Sound Lab
+DESCRIPTION:All Day at Multiple Locations
+LOCATION:Multiple Locations
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR
