@@ -10,5 +10,15 @@
   },
   "keywords": [],
   "author": "Tara <tara.vie@proton.me>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5",
+    "@11ty/eleventy-img": "^6.0.4",
+    "autoprefixer": "^10.4.27",
+    "postcss": "^8.5.9",
+    "tailwindcss": "^4.2.2"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.1"
+  }
 }
