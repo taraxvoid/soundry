@@ -3,9 +3,29 @@
 # Each event needs: title, date, time (optional), location (optional), description (optional), rsvp_link (optional)
 
 events:
-  - title: "Piano Smashing Fundraiser"
-    date: "2026-05-08"
-    time: "6:00 PM - 7:30 PM"
-    location: "Project Project"
-    description: "Donate to Soundry and in return violently diassemble pianos"
-     # rsvp_link: "https://forms.example.com/workshop"
+  - title: "Sound Exploration Workshop"
+    date: "2026-04-25"
+    time: "6:00 PM - 8:00 PM"
+    location: "Omaha Arts Center"
+    description: "Join us for an experimental workshop exploring sound, vibration, and listening. No prior experience needed."
+    rsvp_link: "https://forms.example.com/workshop"
+
+  - title: "Community Listening Session"
+    date: "2026-05-10"
+    time: "3:00 PM - 4:30 PM"
+    location: "Creighton University"
+    description: "A collaborative listening session where participants share sounds from their neighborhoods and discuss acoustic ecology."
+    rsvp_link: "https://forms.example.com/listening"
+
+  - title: "Experimental Education Panel"
+    date: "2026-05-20"
+    time: "5:30 PM - 7:00 PM"
+    location: "Dundee Neighborhood (TBD)"
+    description: "Panel discussion on experimental and community-based education models. Open to educators, students, and community members."
+
+  - title: "Summer Sound Lab"
+    date: "2026-06-15"
+    time: "All Day"
+    location: "Multiple Locations"
+    description: "Three-week intensive workshop series exploring sound design, field recording, and collaborative creation."
+    rsvp_link: "https://forms.example.com/summer"

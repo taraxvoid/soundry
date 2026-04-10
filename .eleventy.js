@@ -43,7 +43,7 @@ module.exports = function(eleventyConfig) {
     return lines.join('\r\n');
   };
 
-  // Hook to generate the ICS file after build
+  // Hook to generate the ICS file and events.json after build
   eleventyConfig.on('eleventy.after', async ({ dir, results }) => {
     try {
       const eventsPath = path.join(dir.input, '_data', 'events.yml');
@@ -51,13 +51,19 @@ module.exports = function(eleventyConfig) {
       const data = YAML.load(fileContents);
       const events = data.events || [];
 
+      // Generate ICS file
       const icsContent = generateICS(events);
-      const outputPath = path.join(dir.output, 'calendar.ics');
-      
-      fs.writeFileSync(outputPath, icsContent);
+      const icsOutputPath = path.join(dir.output, 'calendar.ics');
+      fs.writeFileSync(icsOutputPath, icsContent);
       console.log('[11ty] Generated calendar.ics');
+
+      // Generate JSON file
+      const jsonContent = JSON.stringify({ events }, null, 2);
+      const jsonOutputPath = path.join(dir.output, 'events.json');
+      fs.writeFileSync(jsonOutputPath, jsonContent);
+      console.log('[11ty] Generated events.json');
     } catch (error) {
-      console.error('[11ty] Error generating calendar.ics:', error);
+      console.error('[11ty] Error generating files:', error);
     }
   });
 

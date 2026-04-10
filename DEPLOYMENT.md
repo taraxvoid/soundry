@@ -10,10 +10,10 @@ Your Soundry website is complete and ready to deploy to Netlify.
 
 ```bash
 cd /home/voidptr/soundry
-git push origin struct
+git push origin main
 ```
 
-Netlify will automatically build and deploy from the `struct` branch.
+Netlify will automatically build and deploy from the `main` branch.
 
 ### Option 2: Manual Deployment via Netlify CLI
 
@@ -177,7 +177,7 @@ For questions or issues:
 **Ready to deploy!** Push to GitHub and Netlify will handle the rest.
 
 ```bash
-git push origin struct
+git push origin main
 ```
 
 Your site will be live within 1-2 minutes.
