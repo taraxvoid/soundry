@@ -1,0 +1,11 @@
+# Soundry Events Calendar
+# Edit this file to add, update, or remove events.
+# Each event needs: title, date, time (optional), location (optional), description (optional), rsvp_link (optional)
+
+events:
+  - title: "Piano Smashing Fundraiser"
+    date: "2026-05-08"
+    time: "6:00 PM - 7:30 PM"
+    location: "Project Project"
+    description: "Donate to Soundry and in return violently diassemble pianos"
+     # rsvp_link: "https://forms.example.com/workshop"
