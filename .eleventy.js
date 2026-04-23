@@ -3,47 +3,40 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function(eleventyConfig) {
-  // Function to generate iCalendar format
-  const generateICS = (events) => {
+  // Function to generate iCalendar format for a single event
+  const generateSingleEventICS = (event) => {
+    const uid = event.title.toLowerCase().replace(/\s+/g, '-') + '@soundry.local';
+    const date = event.date.replace(/-/g, '');
+    const description = event.time && event.location 
+      ? event.time + ' at ' + event.location
+      : (event.description || '');
+
     const lines = [
       'BEGIN:VCALENDAR',
       'VERSION:2.0',
       'PRODID:-//Soundry//Omaha Experimental Education//EN',
       'CALSCALE:GREGORIAN',
       'METHOD:PUBLISH',
-      'X-WR-CALNAME:Soundry Events',
+      'X-WR-CALNAME:' + event.title,
       'X-WR-TIMEZONE:America/Chicago',
-      'X-WR-CALDESC:Upcoming events from Soundry - Omaha Experimental Education'
+      'X-WR-CALDESC:' + event.title + ' - Soundry',
+      'BEGIN:VEVENT',
+      'UID:' + uid,
+      'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
+      'DTSTART:' + date + 'T000000Z',
+      'SUMMARY:' + event.title,
+      'DESCRIPTION:' + description,
+      ...(event.location ? ['LOCATION:' + event.location] : []),
+      'STATUS:CONFIRMED',
+      'SEQUENCE:0',
+      'END:VEVENT',
+      'END:VCALENDAR'
     ];
 
-    if (events && Array.isArray(events)) {
-      events.forEach(event => {
-        const uid = event.title.toLowerCase().replace(/\s+/g, '-') + '@soundry.local';
-        const date = event.date.replace(/-/g, '');
-        const description = event.time && event.location 
-          ? event.time + ' at ' + event.location
-          : event.description || '';
-
-        lines.push(
-          'BEGIN:VEVENT',
-          'UID:' + uid,
-          'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
-          'DTSTART:' + date + 'T000000Z',
-          'SUMMARY:' + event.title,
-          'DESCRIPTION:' + description,
-          ...(event.location ? ['LOCATION:' + event.location] : []),
-          'STATUS:CONFIRMED',
-          'SEQUENCE:0',
-          'END:VEVENT'
-        );
-      });
-    }
-
-    lines.push('END:VCALENDAR');
     return lines.join('\r\n');
   };
 
-  // Hook to generate the ICS file and events.json after build
+  // Hook to generate individual ICS files and events.json after build
   eleventyConfig.on('eleventy.after', async ({ dir, results }) => {
     try {
       const eventsPath = path.join(dir.input, '_data', 'events.yml');
@@ -51,11 +44,21 @@ module.exports = function(eleventyConfig) {
       const data = YAML.load(fileContents);
       const events = data.events || [];
 
-      // Generate ICS file
-      const icsContent = generateICS(events);
-      const icsOutputPath = path.join(dir.output, 'calendar.ics');
-      fs.writeFileSync(icsOutputPath, icsContent);
-      console.log('[11ty] Generated calendar.ics');
+      // Generate individual ICS files for each event
+      events.forEach((event, index) => {
+        const icsContent = generateSingleEventICS(event);
+        const filename = event.title.toLowerCase().replace(/\s+/g, '-') + '.ics';
+        const icsOutputPath = path.join(dir.output, 'events', filename);
+        
+        // Create events directory if it doesn't exist
+        const eventsDir = path.join(dir.output, 'events');
+        if (!fs.existsSync(eventsDir)) {
+          fs.mkdirSync(eventsDir, { recursive: true });
+        }
+        
+        fs.writeFileSync(icsOutputPath, icsContent);
+        console.log(`[11ty] Generated events/${filename}`);
+      });
 
       // Generate JSON file
       const jsonContent = JSON.stringify({ events }, null, 2);

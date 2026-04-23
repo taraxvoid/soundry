@@ -13,7 +13,11 @@ document.addEventListener('DOMContentLoaded', async function() {
       events.sort((a, b) => new Date(a.date) - new Date(b.date));
 
       // Render each event
-      eventsList.innerHTML = events.map(event => `
+      eventsList.innerHTML = events.map(event => {
+        const icsFilename = event.title.toLowerCase().replace(/\s+/g, '-') + '.ics';
+        const icsPath = `/events/${icsFilename}`;
+        
+        return `
         <div style="background: white; padding: 24px; border-radius: 8px; border-left: 4px solid #8B2C2C; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s; hover: {box-shadow: 0 4px 12px rgba(139,44,44,0.2)}">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
             <h3 style="font-size: 20px; font-weight: bold; color: #1a1a1a; margin: 0;">${escapeHtml(event.title)}</h3>
@@ -29,13 +33,19 @@ document.addEventListener('DOMContentLoaded', async function() {
 
           ${event.description ? `<p style="color: #555; margin: 12px 0; line-height: 1.5;">${escapeHtml(event.description)}</p>` : ''}
 
-          ${event.rsvp_link ? `
-            <a href="${escapeHtml(event.rsvp_link)}" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #8B2C2C; font-weight: 600; text-decoration: underline; transition: all 0.3s;">
-              Learn More / RSVP →
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px;">
+            <a href="${icsPath}" download style="display: inline-block; color: #8B2C2C; font-weight: 600; text-decoration: underline; transition: all 0.3s; font-size: 14px;">
+              📅 Add to Calendar
             </a>
-          ` : ''}
+            ${event.rsvp_link ? `
+              <a href="${escapeHtml(event.rsvp_link)}" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #8B2C2C; font-weight: 600; text-decoration: underline; transition: all 0.3s; font-size: 14px;">
+                Learn More / RSVP →
+              </a>
+            ` : ''}
+          </div>
         </div>
-      `).join('');
+      `;
+      }).join('');
     } else if (eventsList && events.length === 0) {
       eventsList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #999; font-style: italic; padding: 32px 0;">No upcoming events scheduled yet. Check back soon!</div>';
     }
