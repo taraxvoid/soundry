@@ -101,7 +101,7 @@
     
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
-        <a href="#home" class="text-2xl font-bold text-white">♪ Soundry</a>
+        <a href="#home" class="text-2xl font-bold text-white">♪ Soundry ♪</a>
         <div class="hidden md:flex space-x-8">
           <a href="#calendar" class="text-white hover:text-yellow-100 transition">Calendar</a>
           <a href="#signup" class="text-white hover:text-yellow-100 transition">Email List</a>
@@ -111,6 +111,22 @@
       </div>
     </div>
   </nav>
+
+  <!-- Calendar Section - Moved to top for visibility -->
+  <section id="calendar" class="section" style="background: linear-gradient(135deg, #f5f1eb 0%, #e8e2d8 100%); padding-top: 32px; padding-bottom: 32px;">
+    <div class="max-w-6xl mx-auto px-6 sm:px-8">
+      <h2 class="text-2xl sm:text-3xl font-bold mb-4" style="color: var(--black);">📅 Upcoming Events</h2>
+
+      <a href="/calendar.ics" class="inline-flex items-center font-semibold transition text-sm sm:text-base mb-6" style="color: var(--red-dark); text-decoration: underline;">
+        Add to Calendar (downloads an .ics file)
+      </a>
+
+      <div id="events-list" class="grid sm:grid-cols-2 gap-4 sm:gap-6">
+        <!-- Events will be rendered here by JavaScript -->
+        <div class="italic" style="color: #999;">Loading events...</div>
+      </div>
+    </div>
+  </section>
 
   <!-- Hero Section -->
   <section id="home" class="section" style="background: linear-gradient(135deg, #a73c3c 0%, #8B2C2C 100%); color: white;">
@@ -209,29 +225,12 @@
 
   </section>
 
-  <!-- Calendar Section -->
-  <section id="calendar" class="section" style="background: linear-gradient(135deg, #f5f1eb 0%, #e8e2d8 100%);">
-    <div class="max-w-6xl mx-auto px-6 sm:px-8">
-      <p class="text-xl mb-8 max-w-3xl leading-relaxed">
-      Upcoming Events</p>
-        <a href="/calendar.ics" class="inline-flex items-center font-semibold transition" style="color: var(--red-dark); text-decoration: underline;">
-          📅 Add to Calendar (downloads an .ics file)
-        </a>
-      </div>
-
-      <div id="events-list" class="grid md:grid-cols-2 gap-6">
-        <!-- Events will be rendered here by JavaScript -->
-        <div class="italic" style="color: #999;">Loading events...</div>
-      </div>
-    </div>
-  </section>
-
   <!-- Email Signup Section -->
   <section id="signup" class="section" style="background: linear-gradient(135deg, var(--cream) 0%, #f0ebe5 100%);">
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <div class="max-w-2xl">
-<p class="text-xl mb-8 max-w-3xl leading-relaxed">
-      Email List Signup</p>        
+        <h2 class="text-2xl font-bold mb-8" style="color: var(--black);">Hear about future Soundry events!</h2>
+       
         <form id="email-signup-form" class="email-signup-form">
           <!-- Honeypot spam protection: hidden field -->
           <input type="hidden" name="_website" value="">
@@ -264,7 +263,7 @@
           <div id="signup-message" class="mb-4 hidden p-4 rounded-lg text-center"></div>
 
           <button type="submit" class="w-full btn-primary text-lg" id="signup-submit">
-            Subscribe to Soundry Updates
+            Subscribe
           </button>
         </form>
 
@@ -306,7 +305,7 @@
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <div class="max-w-2xl">
         
-        <h3 class="text-2xl font-bold mb-8" style="color: var(--black);">Testimonials</h3>
+        <h2 class="text-2xl font-bold mb-8" style="color: var(--black);">Testimonials</h2>
         <p class="mb-6" style="color: var(--black);">
           How has Soundry affected you?
         </p>
