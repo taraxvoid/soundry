@@ -18,3 +18,10 @@
   to = "/#impact"
   status = 200
   force = false
+
+
+[[redirects]]
+  from = "/"
+  to = "https://www.instagram.com/omahasoundry"
+  status = 301
+  force = true
