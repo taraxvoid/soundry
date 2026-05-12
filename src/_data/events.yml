@@ -1,11 +1,40 @@
 # Soundry Events Calendar
 # Edit this file to add, update, or remove events.
-# Each event needs: title, date, time (optional), location (optional), description (optional), rsvp_link (optional)
+# Format: title, date, time (optional), location (optional), description (optional), rsvp_link (optional)
 
 events:
-  - title: "Piano Smashing Fundraiser"
-    date: "2026-05-08"
+  - title: "Micro-Listening"
+    date: "2026-06-02"
     time: "6:00 PM - 7:30 PM"
-    location: "Project Project"
-    description: "Donate to violently disassemble pianos in a DIY hackerspace"
-     # rsvp_link: "https://forms.example.com/workshop"
+    location: "Church Arthouse (Omaha)"
+    description: "Peer into the world of the tiniest of sounds"
+
+  - title: "Dreaming Worlds"
+    date: "2026-06-09"
+    time: "6:00 PM - 7:30 PM"
+    location: "Church Arthouse (Omaha)"
+    description: "Lucid dreaming in a dreamy soundscape"
+
+  - title: "Future Listening"
+    date: "2026-06-16"
+    time: "6:00 PM - 7:30 PM"
+    location: "Church Arthouse (Omaha)"
+    description: "It's like EPCOT, for sounds"
+
+  - title: "DIY Instruments: Rain Sticks!"
+    date: "2026-07-28"
+    time: "6:00 PM - 7:30 PM"
+    location: "Church Arthouse (Omaha)"
+    description: "Capture the soothing sound of the rain, in a conveniently portable tube"
+
+  - title: "DIY Instruments: Thunder Tubes and Spring Drums!"
+    date: "2026-08-04"
+    time: "6:00 PM - 7:30 PM"
+    location: "Church Arthouse (Omaha)"
+    description: "Capture the soothing sound of the rain, in a totally tubular form factor"
+
+  - title: "DIY Instruments: Metal Resonance Instruments!"
+    date: "2026-08-11"
+    time: "6:00 PM - 7:30 PM"
+    location: "Church Arthouse (Omaha)"
+    description: "Capture the soothing sound of the rain, in a totally tubular form factor"
