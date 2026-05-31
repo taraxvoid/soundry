@@ -3,10 +3,31 @@ const fs = require('fs');
 const path = require('path');
 
 module.exports = function(eleventyConfig) {
+  // Parse time string like "6:00 PM - 7:30 PM" to extract start and end times
+  const parseEventTime = (timeStr) => {
+    if (!timeStr) return { startTime: '180000', endTime: '190000' }; // Default 6-7 PM
+    
+    const match = timeStr.match(/(\d{1,2}):(\d{2})\s*(AM|PM)\s*-\s*(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (!match) return { startTime: '180000', endTime: '190000' };
+    
+    const convertTo24Hr = (hour, minute, period) => {
+      let h = parseInt(hour);
+      if (period.toUpperCase() === 'PM' && h !== 12) h += 12;
+      if (period.toUpperCase() === 'AM' && h === 12) h = 0;
+      return String(h).padStart(2, '0') + String(minute).padStart(2, '0') + '00';
+    };
+    
+    return {
+      startTime: convertTo24Hr(match[1], match[2], match[3]),
+      endTime: convertTo24Hr(match[4], match[5], match[6])
+    };
+  };
+
   // Function to generate iCalendar format for a single event
   const generateSingleEventICS = (event) => {
     const uid = event.title.toLowerCase().replace(/\s+/g, '-') + '@soundry.local';
     const date = event.date.replace(/-/g, '');
+    const { startTime, endTime } = parseEventTime(event.time);
     const description = event.time && event.location 
       ? event.time + ' at ' + event.location
       : (event.description || '');
@@ -23,7 +44,8 @@ module.exports = function(eleventyConfig) {
       'BEGIN:VEVENT',
       'UID:' + uid,
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z',
-      'DTSTART:' + date + 'T000000Z',
+      'DTSTART;TZID=America/Chicago:' + date + 'T' + startTime,
+      'DTEND;TZID=America/Chicago:' + date + 'T' + endTime,
       'SUMMARY:' + event.title,
       'DESCRIPTION:' + description,
       ...(event.location ? ['LOCATION:' + event.location] : []),
