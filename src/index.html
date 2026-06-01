@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soundry — Omaha Experimental Music Education</title>
   <meta name="description" content="Soundry is experimental community-driven education in Omaha, focused on sound, collaboration, and creative inquiry.">
+  <link rel="stylesheet" href="https://ka-f.webawesome.com/webawesome@3.7.0/styles/webawesome.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html {
@@ -92,6 +94,7 @@
       border-color: var(--red-dark);
     }
   </style>
+  <script type="module" src="https://ka-f.webawesome.com/webawesome@3.7.0/webawesome.loader.js"></script>
 </head>
 <body class="bg-white">
   <!-- Navigation -->
@@ -104,7 +107,9 @@
         <a href="#home" class="text-4xl font-bold text-white">♪ Soundry ♪</a>
         <div class="hidden md:flex space-x-8">
           <a href="#calendar" class="text-white hover:text-yellow-100 transition">Upcoming Events</a>
-          <a href="#donate" class="text-white hover:text-yellow-100 transition">Donate</a>
+          <a href="#about" class="text-white hover:text-yellow-100 transition">About</a>
+          <a href="#donate" class="text-white hover:text-yellow-100 transition">Support</a>
+          <a href="#signup" class="text-white hover:text-yellow-100 transition">Email List</a>
         </div>
       </div>
     </div>
@@ -123,40 +128,14 @@
   </section>
 
   <!-- Hero Section -->
-  <section id="home" class="section" style="background: linear-gradient(135deg, #a73c3c 0%, #8B2C2C 100%); color: white;">
+  <section id="about" class="section" style="background: linear-gradient(135deg, #a73c3c 0%, #8B2C2C 100%); color: white;">
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <h1 class="text-5xl sm:text-6xl font-bold mb-8">Experimental Music Education</h1>
       <p class="text-xl mb-8 max-w-3xl leading-relaxed">
         Pioneering sound-focused workshops throughout the Midwest, emphasizing the significance of playing, listening, creating, and collaborative work.
       </p>
       
-      <div class="grid sm:grid-cols-2 gap-6 mb-12">
-        <div class="bg-black bg-opacity-30 p-6 rounded border-l-4" style="border-left-color: white;">
-          <strong class="block mb-2">Soundscaping</strong>
-          <p>Engages participants in creative music composition, constructing unique soundscapes using both traditional and DIY instruments.</p>
-        </div>
-
-        <div class="bg-black bg-opacity-30 p-6 rounded border-l-4" style="border-left-color: white;">
-          <strong class="block mb-2">Instrument Building</strong>
-          <p>Explores hands-on instrument creation, with past projects including didgeridoos, thumb pianos, rain sticks, and various world percussion instruments.</p>
-        </div>
-
-        <div class="bg-black bg-opacity-30 p-6 rounded border-l-4" style="border-left-color: white;">
-          <strong class="block mb-2">Deep Listening</strong>
-          <p>Introduces intensive listening practices, fostering heightened auditory awareness. Upper-level workshops incorporate body work and explore dreaming practices.</p>
-        </div>
-
-        <div class="bg-black bg-opacity-30 p-6 rounded border-l-4" style="border-left-color: white;">
-          <strong class="block mb-2">DIY Music Technology</strong>
-          <p>Provides accessible workshops on music technology, often with a do-it-yourself approach, supporting participants in navigating and utilizing technology creatively.</p>
-        </div>
-      </div>
       
-<!--       meh buttons
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a href="#calendar" class="btn-primary text-center py-3 px-8">View Events</a>
-        <a href="#signup" class="btn-secondary text-center py-3 px-8">Join Mailing List</a>
-      </div> -->
     </div>
   </section>
 
@@ -226,14 +205,11 @@
         <!-- Left: Call to Action Copy -->
         <div>
           <h2 class="text-3xl sm:text-4xl font-bold mb-6">Support Soundry</h2>
-          <p class="text-lg mb-6 leading-relaxed">
-            Help sustain experimental music education in Omaha. Your support enables hands-on workshops, instrument building, deep listening practices, and DIY music technology for our community.
+          <p class="text-lg leading-relaxed">
+            Your support enables hands-on workshops, instrument building, deep listening practices, and DIY music technology for our community.
           </p>
-          <p class="text-md mb-8 leading-relaxed opacity-95">
-            Founded and led by Stacey Barelos, a music professor at the University of Nebraska at Omaha, Soundry bridges the gap between academic music education and creative community practice.
-          </p>
+          
           <p class="text-sm opacity-90">
-            Choose your preferred payment method below to make a contribution.
           </p>
         </div>
 
@@ -246,7 +222,7 @@
                 <div class="font-bold text-lg">Venmo</div>
                 <div class="text-sm opacity-90">@omahasoundry</div>
               </div>
-              <div class="text-2xl">📲</div>
+              <div class="text-3xl"><wa-icon name="venmo" family="brands"></wa-icon></div>
             </div>
           </a>
 
@@ -257,20 +233,9 @@
                 <div class="font-bold text-lg">PayPal</div>
                 <div class="text-sm opacity-90">Soundry (501c3)</div>
               </div>
-              <div class="text-2xl">💳</div>
+              <div class="text-3xl"><wa-icon name="paypal" family="brands"></wa-icon></div>
             </div>
           </a>
-
-          <!-- Secondary: Zelle -->
-          <div class="p-4 rounded-lg transition" style="background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.3);">
-            <div class="flex items-center justify-between mb-2">
-              <div class="font-semibold text-sm">Zelle (Direct Transfer)</div>
-              <div class="text-lg">💵</div>
-            </div>
-            <div class="text-sm opacity-90 break-words">
-              <strong>Email:</strong> barelos@gmail.com
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -280,8 +245,10 @@
   <section id="signup" class="section" style="background: linear-gradient(135deg, var(--cream) 0%, #f0ebe5 100%);">
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <div class="max-w-2xl">
-        <h2 class="text-2xl font-bold mb-8" style="color: var(--black);">Hear about future Soundry events!</h2>
-       
+        <h2 class="text-2xl font-bold mb-8" style="color: var(--black);">Email List</h2>
+       <p class="text-md mb-8 leading-relaxed opacity-95">
+       Be the first to hear about event announcements
+      </p>
         <form id="email-signup-form" class="email-signup-form">
           <!-- Honeypot spam protection: hidden field -->
           <input type="hidden" name="_website" value="">
@@ -319,7 +286,6 @@
         </form>
 
         <p class="text-sm mt-4" style="color: #888;">
-          We respect your privacy. Unsubscribe anytime.
         </p>
       </div>
     </div>
@@ -329,7 +295,7 @@
   <section id="instagram" class="section" style="background: linear-gradient(135deg, #f5f1eb 0%, #e8e2d8 100%);">
     <div class="max-w-6xl mx-auto px-6 sm:px-8 text-center">
       <p class="text-xl mb-8 max-w-3xl leading-relaxed">
-      Instant Gram</p>
+      Follow Soundry On Instant Gram</p>
 
       <!-- Instagram Feed Embed -->
       <div class="flex justify-center">
@@ -352,6 +318,7 @@
     </div>
   </section>
 
+  <!-- can re-add
   <section id="testimonials" class="section" style="background: linear-gradient(135deg, var(--cream) 0%, #f0ebe5 100%);">
     <div class="max-w-6xl mx-auto px-6 sm:px-8">
       <div class="max-w-2xl">
@@ -407,12 +374,14 @@
         </form>
       </div>
     </div>
+  </section> -->
+
 
   <!-- Footer -->
   <footer style="background: var(--black); color: #ccc;" class="py-1">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="border-t border-gray-700 pt-8 text-center text-sm">
-        <p>&copy; 2026 Soundry. All rights reserved.</p>
+        <p>built with <wa-icon name="heart" style="font-size: 0.9rem; color: var(--red-light); display: inline;"></wa-icon> by <a href="https://www.ravenflight.com" target="_blank" rel="noopener noreferrer" style="color: #ccc; text-decoration: underline;">ravenflight</a></p>
       </div>
     </div>
   </footer>

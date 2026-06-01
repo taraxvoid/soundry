@@ -18,42 +18,38 @@ document.addEventListener('DOMContentLoaded', async function() {
         const icsPath = `/events/${icsFilename}`;
         
         return `
-        <div style="background: white; padding: 24px; border-radius: 8px; border-left: 4px solid #8B2C2C; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s; hover: {box-shadow: 0 4px 12px rgba(139,44,44,0.2)}">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px;">
-            <h3 style="font-size: 20px; font-weight: bold; color: #1a1a1a; margin: 0;">${escapeHtml(event.title)}</h3>
-            <span style="font-size: 12px; background: #8B2C2C; color: white; padding: 4px 12px; border-radius: 4px; white-space: nowrap; margin-left: 8px;">
-              ${formatDate(event.date)}
-            </span>
-          </div>
+        <wa-card>
+          <h3 slot="header">${escapeHtml(event.title)}</h3>
+          <div class="event-date-badge">${formatDate(event.date)}</div>
           
-          <div style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; color: #333;">
+          <div class="event-details">
             ${event.time ? `<div><strong>⏰ Time:</strong> ${escapeHtml(event.time)}</div>` : ''}
             ${event.location ? `<div><strong>📍 Location:</strong> ${escapeHtml(event.location)}</div>` : ''}
           </div>
 
-          ${event.description ? `<p style="color: #555; margin: 12px 0; line-height: 1.5;">${escapeHtml(event.description)}</p>` : ''}
+          ${event.description ? `<p>${escapeHtml(event.description)}</p>` : ''}
 
-          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px;">
-            <a href="${icsPath}" download style="display: inline-block; color: #8B2C2C; font-weight: 600; text-decoration: underline; transition: all 0.3s; font-size: 14px;">
+          <div slot="footer" class="event-links">
+            <a href="${icsPath}" download>
               📅 Add to Calendar
             </a>
             ${event.rsvp_link ? `
-              <a href="${escapeHtml(event.rsvp_link)}" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #8B2C2C; font-weight: 600; text-decoration: underline; transition: all 0.3s; font-size: 14px;">
-                Learn More / RSVP →
+              <a href="${escapeHtml(event.rsvp_link)}" target="_blank" rel="noopener noreferrer">
+                Learn More / RSVP
               </a>
             ` : ''}
           </div>
-        </div>
+        </wa-card>
       `;
       }).join('');
     } else if (eventsList && events.length === 0) {
-      eventsList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #999; font-style: italic; padding: 32px 0;">No upcoming events scheduled yet. Check back soon!</div>';
+      eventsList.innerHTML = '<div class="loading-state">No upcoming events scheduled yet. Check back soon!</div>';
     }
   } catch (error) {
     console.warn('Could not load events:', error);
     const eventsList = document.getElementById('events-list');
     if (eventsList) {
-      eventsList.innerHTML = '<div style="grid-column: 1/-1; text-align: center; color: #999; font-style: italic; padding: 32px 0;">Events loading...</div>';
+      eventsList.innerHTML = '<div class="loading-state">Events loading...</div>';
     }
   }
 
@@ -62,6 +58,37 @@ document.addEventListener('DOMContentLoaded', async function() {
   if (signupForm) {
     signupForm.addEventListener('submit', handleEmailSignup);
   }
+
+  // Highlight current nav link
+  const navBtns = document.querySelectorAll('.main-nav wa-button');
+  const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+  navBtns.forEach(btn => {
+    const href = (btn.getAttribute('href') || '').replace(/\/$/, '') || '/';
+    if (href === currentPath || (currentPath === '/' && href === '#home')) {
+      btn.classList.add('active');
+      btn.setAttribute('aria-current', 'page');
+    }
+  });
+
+  // Back to top button
+  const backToTopButton = document.getElementById('backToTop');
+  const header = document.querySelector('header');
+  
+  window.addEventListener('scroll', function() {
+    const headerBottom = header.offsetHeight;
+    if (window.scrollY > headerBottom) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+  });
+  
+  backToTopButton.addEventListener('click', function() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
 });
 
 async function handleEmailSignup(event) {
