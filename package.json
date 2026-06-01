@@ -15,6 +15,7 @@
   "author": "Tara <1711810+taraxvoid@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "autoprefixer": "^10.4.27",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.7",
