@@ -4,17 +4,23 @@
   "description": "Soundry",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "bunx @11ty/eleventy --serve",
-    "build": "bunx @11ty/eleventy"
+    "test": "bun test test/site.test.js && bunx playwright test",
+    "serve": "eleventy --serve",
+    "build": "eleventy",
+    "prepare": "husky",
+    "lint": "bunx lint-staged",
+    "lint:fix": "bunx prettier --write ."
   },
   "keywords": [],
-  "author": "Tara <tara.vie@proton.me>",
+  "author": "Tara <1711810+taraxvoid@users.noreply.github.com>",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy-img": "^6.0.4",
     "autoprefixer": "^10.4.27",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
+    "playwright": "^1.60.0",
     "postcss": "^8.5.9",
+    "prettier-plugin-toml": "^2.0.6",
     "tailwindcss": "^4.2.2"
   },
   "dependencies": {
@@ -23,5 +29,8 @@
   },
   "volta": {
     "node": "24.15.0"
+  },
+  "lint-staged": {
+    "*.{css,html,js,cjs,json,md,toml,yml}": "bunx prettier --write"
   }
 }
