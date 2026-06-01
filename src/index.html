@@ -93,6 +93,68 @@
     .border-accent {
       border-color: var(--red-dark);
     }
+
+    /* Event card styling to match red/white/black site theme */
+    wa-card {
+      display: block;
+      background: var(--white);
+      color: var(--black);
+      border: 2px solid var(--red-dark);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    wa-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+    }
+
+    /* Header/title in the card (slot="header") */
+    h3[slot="header"] {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.125rem;
+      color: var(--red-dark);
+      font-weight: 700;
+    }
+
+    .event-date-badge {
+      display: inline-block;
+      background: var(--red-dark);
+      color: var(--white);
+      padding: 0.25rem 0.5rem;
+      border-radius: 999px;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .event-details {
+      margin-bottom: 0.75rem;
+      color: var(--black);
+      line-height: 1.4;
+    }
+
+    .event-links {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+    .event-links a {
+      color: var(--red-dark);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .event-links a:hover {
+      color: var(--red-light);
+      text-decoration: underline;
+    }
+
+    .loading-state {
+      color: #666;
+      padding: 1rem;
+    }
   </style>
   <script type="module" src="https://ka-f.webawesome.com/webawesome@3.7.0/webawesome.loader.js"></script>
 </head>
