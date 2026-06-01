@@ -187,6 +187,7 @@
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-16">
           <a href="#home" class="text-4xl font-bold text-white">♪ Soundry ♪</a>
+          <!-- Desktop nav -->
           <div class="hidden md:flex space-x-8">
             <a
               href="#calendar"
@@ -207,6 +208,72 @@
               >Email List</a
             >
           </div>
+          <!-- Mobile hamburger -->
+          <button
+            id="mobile-menu-btn"
+            class="md:hidden text-white focus:outline-none"
+            aria-label="Toggle navigation"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            <svg
+              id="menu-icon-open"
+              class="w-10 h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+            <svg
+              id="menu-icon-close"
+              class="w-10 h-10 hidden"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden"
+        style="background-color: var(--red-dark)"
+      >
+        <div class="px-4 pb-4 space-y-3 flex flex-col">
+          <a
+            href="#calendar"
+            class="text-white hover:text-yellow-100 transition py-2 border-b border-white/20"
+            >Upcoming Events</a
+          >
+          <a
+            href="#about"
+            class="text-white hover:text-yellow-100 transition py-2 border-b border-white/20"
+            >About</a
+          >
+          <a
+            href="#donate"
+            class="text-white hover:text-yellow-100 transition py-2 border-b border-white/20"
+            >Support</a
+          >
+          <a
+            href="#signup"
+            class="text-white hover:text-yellow-100 transition py-2"
+            >Email List</a
+          >
         </div>
       </div>
     </nav>
@@ -533,5 +600,26 @@
     </footer>
 
     <script src="/js/main.js"></script>
+    <script>
+      const btn = document.getElementById("mobile-menu-btn");
+      const menu = document.getElementById("mobile-menu");
+      const iconOpen = document.getElementById("menu-icon-open");
+      const iconClose = document.getElementById("menu-icon-close");
+      btn.addEventListener("click", () => {
+        const isOpen = !menu.classList.contains("hidden");
+        menu.classList.toggle("hidden", isOpen);
+        iconOpen.classList.toggle("hidden", !isOpen);
+        iconClose.classList.toggle("hidden", isOpen);
+        btn.setAttribute("aria-expanded", String(!isOpen));
+      });
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menu.classList.add("hidden");
+          iconOpen.classList.remove("hidden");
+          iconClose.classList.add("hidden");
+          btn.setAttribute("aria-expanded", "false");
+        });
+      });
+    </script>
   </body>
 </html>
