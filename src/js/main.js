@@ -121,8 +121,8 @@ async function handleEmailSignup(event) {
 }
 
 function formatDate(dateString) {
-  const options = { month: 'short', day: 'numeric', year: 'numeric' };
-  return new Date(dateString).toLocaleDateString('en-US', options);
+  const options = { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'America/Chicago' };
+  return new Date(dateString + 'T00:00:00').toLocaleDateString('en-US', options);
 }
 
 function escapeHtml(text) {
