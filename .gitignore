@@ -1,3 +1,40 @@
+# Editor
+.cursor
+.vscode/
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules/
+
+.claude/
+
+# Eleventy output
+_site/
+
+# Netlify
+.netlify
+
+# Playwright
+playwright-report/
+test-results/
+.playwright/
+.last-run.json
+
+# Environment
+.env
+.env.*
+.env.fish
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+
+
 # Generated files
 dist/
 packages/*/visualize/*
