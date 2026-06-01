@@ -12,13 +12,13 @@
   "author": "Tara <tara.vie@proton.me>",
   "license": "MIT",
   "devDependencies": {
-    "@11ty/eleventy": "^3.1.5",
     "@11ty/eleventy-img": "^6.0.4",
     "autoprefixer": "^10.4.27",
     "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2"
   },
   "dependencies": {
+    "@11ty/eleventy": "^3.1.5",
     "js-yaml": "^4.1.1"
   },
   "volta": {
