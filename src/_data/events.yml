@@ -3,12 +3,6 @@
 # Format: title, date, time (optional), location (optional), description (optional), rsvp_link (optional)
 
 events:
-  - title: "Micro-Listening"
-    date: "2026-06-02"
-    time: "6:00 PM - 7:30 PM"
-    location: "Church Arthouse (Omaha)"
-    description: "Peer into the world of the tiniest of sounds"
-
   - title: "Dreaming Worlds"
     date: "2026-06-09"
     time: "6:00 PM - 7:30 PM"
