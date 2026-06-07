@@ -16,17 +16,17 @@
   "license": "MIT",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
-    "autoprefixer": "^10.4.27",
+    "autoprefixer": "^10.5.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.7",
     "playwright": "^1.60.0",
-    "postcss": "^8.5.9",
+    "postcss": "^8.5.15",
     "prettier-plugin-toml": "^2.0.6",
-    "tailwindcss": "^4.2.2"
+    "tailwindcss": "^4.3.0"
   },
   "dependencies": {
-    "@11ty/eleventy": "^3.1.5",
-    "js-yaml": "^4.1.1"
+    "@11ty/eleventy": "^3.1.6",
+    "js-yaml": "^4.2.0"
   },
   "volta": {
     "node": "24.15.0"
