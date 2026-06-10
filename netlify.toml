@@ -1,22 +1,9 @@
-
 [build]
   command = "bun run build"
-  functions = "netlify/functions"
-  publish = "_site"
-
-# Form handling configuration
-[form]
-  enabled = true
+  publish = "dist"
 
 [[redirects]]
   from = "/success"
   to = "/#signup"
   status = 200
   force = false
-
-[[redirects]]
-  from = "/success-impact"
-  to = "/#impact"
-  status = 200
-  force = false
-

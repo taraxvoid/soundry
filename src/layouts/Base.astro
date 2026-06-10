@@ -1,0 +1,159 @@
+---
+import '../styles/theme.css'
+
+interface Props {
+  title?: string
+  description?: string
+}
+
+const {
+  title = "Soundry — Omaha's Experimental Music Education Workshops",
+  description = 'Soundry is experimental community-driven education in Omaha, focused on sound, collaboration, and creative inquiry.',
+} = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link
+      rel="stylesheet"
+      href="https://ka-f.webawesome.com/webawesome@3.7.0/styles/webawesome.css"
+    />
+    <script
+      is:inline
+      type="module"
+      src="https://ka-f.webawesome.com/webawesome@3.7.0/webawesome.loader.js"
+    ></script>
+    <link rel="alternate" type="text/calendar" href="/events.ics" title="Soundry Events" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- Navigation -->
+    <header class="site-header">
+      <div class="nav-inner">
+        <a href="#home" class="nav-logo">♪ Soundry ♪</a>
+        <ul class="nav-links">
+          <li><a href="#calendar">Upcoming Events</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#donate">Support</a></li>
+          <li><a href="#signup">Email List</a></li>
+        </ul>
+        <button
+          id="nav-toggle"
+          class="nav-toggle"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="nav-mobile"
+        >
+          <svg
+            id="icon-open"
+            width="32"
+            height="32"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg
+            id="icon-close"
+            width="32"
+            height="32"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            style="display: none;"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <nav id="nav-mobile" class="nav-mobile" aria-label="Mobile navigation">
+        <a href="#calendar">Upcoming Events</a>
+        <a href="#about">About</a>
+        <a href="#donate">Support</a>
+        <a href="#signup">Email List</a>
+      </nav>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+
+    <footer>
+      <p>
+        built with
+        <wa-icon
+          name="heart"
+          style="font-size: 0.9rem; color: var(--primary-light); display: inline;"
+        ></wa-icon>
+        by
+        <a
+          href="https://www.ravenflight.io"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          ravenflight
+        </a>
+      </p>
+    </footer>
+
+    <button id="backToTop" aria-label="Back to top">
+      <wa-icon name="circle-arrow-up" variant="solid"></wa-icon>
+    </button>
+
+    <script>
+      // Mobile nav toggle
+      const toggle = document.getElementById('nav-toggle')
+      const mobileMenu = document.getElementById('nav-mobile')
+      const iconOpen = document.getElementById('icon-open')
+      const iconClose = document.getElementById('icon-close')
+
+      toggle?.addEventListener('click', () => {
+        const isOpen = mobileMenu?.classList.contains('open')
+        mobileMenu?.classList.toggle('open', !isOpen)
+        iconOpen && (iconOpen.style.display = isOpen ? '' : 'none')
+        iconClose && (iconClose.style.display = isOpen ? 'none' : '')
+        toggle.setAttribute('aria-expanded', String(!isOpen))
+      })
+
+      // Close mobile menu on link click
+      mobileMenu?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.remove('open')
+          iconOpen && (iconOpen.style.display = '')
+          iconClose && (iconClose.style.display = 'none')
+          toggle?.setAttribute('aria-expanded', 'false')
+        })
+      })
+
+      // Back to top
+      const backToTop = document.getElementById('backToTop')
+      const header = document.querySelector('.site-header')
+      if (backToTop && header) {
+        window.addEventListener('scroll', () => {
+          backToTop.classList.toggle('show', window.scrollY > header.clientHeight)
+        })
+        backToTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        })
+      }
+    </script>
+  </body>
+</html>

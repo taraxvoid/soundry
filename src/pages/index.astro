@@ -1,0 +1,187 @@
+---
+import EventCalendar from '../components/EventCalendar.astro'
+import Base from '../layouts/Base.astro'
+---
+
+<Base>
+  <!-- Hidden static forms for Netlify Forms detection at build time -->
+  <form name="email-signup" data-netlify="true" hidden>
+    <input type="email" name="email" />
+    <input type="text" name="name" />
+  </form>
+
+  <!-- Events Calendar -->
+  <EventCalendar />
+<br/>
+
+  <!-- About / Hero -->
+  <section class="section hero-section" id="about">
+    <div class="section-inner">
+      <h1>Experimental Music Education</h1>
+      <p>
+        Pioneering sound-focused workshops throughout the Midwest, emphasizing
+        the significance of playing, listening, creating, and collaborative
+        work.
+      </p>
+    </div>
+  </section>
+
+  <!-- Donate -->
+  <section class="section donate-section" id="donate">
+    <div class="section-inner">
+      <div class="donate-container">
+        <div class="donate-content">
+          <h2>Support Soundry</h2>
+          <p>
+            Your support enables hands-on workshops, instrument building, deep
+            listening practices, and DIY music technology for our community.
+          </p>
+        </div>
+        <div class="donate-methods">
+          <a
+            href="https://venmo.com/u/omahasoundry"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="donate-link"
+          >
+            <div>
+              <span class="method-name">Venmo</span>
+              <span class="method-handle">@omahasoundry</span>
+            </div>
+            <span class="method-icon">
+              <wa-icon name="venmo" family="brands"></wa-icon>
+            </span>
+          </a>
+          <a
+            href="https://www.paypal.com/US/fundraiser/charity/5506255"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="donate-link"
+          >
+            <div>
+              <span class="method-name">PayPal</span>
+              <span class="method-handle">Soundry (501c3)</span>
+            </div>
+            <span class="method-icon">
+              <wa-icon name="paypal" family="brands"></wa-icon>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Email Signup -->
+  <section class="section signup-section" id="signup">
+    <div class="section-inner">
+      <h2>Email List</h2>
+      <p class="lead">Be the first to hear about event announcements</p>
+      <form
+        name="email-signup"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        class="signup-form"
+        id="signup-form"
+      >
+        <input type="hidden" name="form-name" value="email-signup" />
+        <input type="hidden" name="bot-field" />
+
+        <div class="form-group">
+          <label for="signup-email">Your Email *</label>
+          <input
+            type="email"
+            id="signup-email"
+            name="email"
+            required
+            placeholder="your@email.com"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="signup-name">Your Name (optional)</label>
+          <input
+            type="text"
+            id="signup-name"
+            name="name"
+            placeholder="Your name"
+          />
+        </div>
+
+        <div id="signup-message" class="signup-message"></div>
+
+        <button type="submit" class="signup-button" id="signup-submit">
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Instagram -->
+  <section class="section instagram-section" id="instagram">
+    <div class="section-inner">
+      <p>Follow Soundry On Instant Gram</p>
+      <div class="instagram-embed">
+        <iframe
+          src="https://www.instagram.com/omahasoundry/embed"
+          width="320"
+          height="500"
+          frameborder="0"
+          scrolling="no"
+          allowtransparency="true"
+          title="Omaha Soundry Instagram Feed"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="instagram-link">
+        <a
+          href="https://www.instagram.com/omahasoundry/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit us on Instagram →
+        </a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Email signup form with Netlify
+  const form = document.getElementById('signup-form') as HTMLFormElement | null
+  const submitBtn = document.getElementById('signup-submit') as HTMLButtonElement | null
+  const messageDiv = document.getElementById('signup-message')
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    if (!submitBtn || !messageDiv) return
+
+    submitBtn.disabled = true
+    const originalText = submitBtn.textContent
+    submitBtn.textContent = 'Subscribing...'
+    messageDiv.className = 'signup-message'
+
+    try {
+      const formData = new FormData(form)
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as unknown as Record<string, string>),
+      })
+
+      if (response.ok) {
+        messageDiv.className = 'signup-message success'
+        messageDiv.textContent = '✓ Successfully subscribed!'
+        form.reset()
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch {
+      messageDiv.className = 'signup-message error'
+      messageDiv.textContent = '✗ An error occurred. Please try again.'
+    } finally {
+      submitBtn.disabled = false
+      submitBtn.textContent = originalText ?? 'Subscribe'
+    }
+  })
+</script>
