@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content'
+import EventSubscribe from './EventSubscribe.astro'
+
+const allEvents = await getCollection('events')
+const todayStr = new Date().toISOString().split('T')[0]
+const upcomingEvents = allEvents
+  .filter((e) => e.data.date >= todayStr)
+  .sort((a, b) => a.data.date.localeCompare(b.data.date))
+
+const formatDate = (dateStr: string) => {
+  const date = new Date(`${dateStr}T12:00:00`)
+  return date.toLocaleDateString('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  })
+}
+
+const formatTime = (time: string) => {
+  const [hours, minutes] = time.split(':')
+  const hour = parseInt(hours, 10)
+  const ampm = hour >= 12 ? 'PM' : 'AM'
+  const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour
+  return `${displayHour}:${minutes} ${ampm}`
+}
+---
+
+<section class="section events-section" id="calendar">
+  <div class="section-inner">
+    <h2>📅 Upcoming Events</h2>
+
+    {
+      upcomingEvents.length === 0 ? (
+        <p class="no-events">
+          No upcoming events scheduled yet — check back soon!
+        </p>
+      ) : (
+        <div class="events-grid">
+          {upcomingEvents.map((event) => (
+            <wa-card>
+              <div class="flex-card-inner">
+                {event.data.image && (
+                  <img
+                    src={event.data.image}
+                    alt={event.data.title}
+                    class="event-image"
+                  />
+                )}
+                <div>
+                  <div class="event-header">
+                    <h3 class="event-title">{event.data.title}</h3>
+                    <a
+                      href={`/events/${event.id}.ics`}
+                      class="event-links"
+                      style="margin: 0;"
+                    >
+                      <span>📅 Add to Calendar</span>
+                    </a>
+                  </div>
+                  <span class="event-date-badge">
+                    {formatDate(event.data.date)}
+                  </span>
+                  <div class="event-details">
+                    <span>🕗 {formatTime(event.data.time)}</span>
+                    <span>📍 {event.data.location}</span>
+                    {event.data.price !== '0' && (
+                      <span>🎟 ${event.data.price}</span>
+                    )}
+                    {event.data.price === '0' && <span>🎟 Free</span>}
+                  </div>
+                  {event.data.description && (
+                    <p class="event-description">{event.data.description}</p>
+                  )}
+                  {event.data.rsvpLink && (
+                    <div class="event-links">
+                      <a
+                        href={event.data.rsvpLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Learn More / RSVP →
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </wa-card>
+          ))}
+        </div>
+      )
+    }
+
+    <EventSubscribe />
+  </div>
+</section>
+
+<style>
+  .flex-card-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .event-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.25rem;
+  }
+  .event-image {
+    width: 100%;
+    max-height: 8rem;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+</style>

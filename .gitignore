@@ -37,6 +37,7 @@ npm-debug.log*
 
 # Generated files
 dist/
+.astro/
 packages/*/visualize/*
 
 # Ignore installed npm modules
