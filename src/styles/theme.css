@@ -51,6 +51,23 @@ body {
   width: auto;
 }
 
+/* === FOOTER === */
+footer {
+  background: var(--dark);
+  color: #ccc;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: #ccc;
+  text-decoration: underline;
+}
+footer a:hover {
+  color: var(--white);
+}
+
 /* === PIANO KEY NAV === */
 .site-header {
   background: var(--primary-dark);
@@ -528,23 +545,6 @@ wa-card:hover {
 }
 .instagram-link a:hover {
   color: var(--primary-light);
-}
-
-/* === FOOTER === */
-footer {
-  background: var(--dark);
-  color: #ccc;
-  padding: 1rem 1.5rem;
-  text-align: center;
-  font-size: 0.9rem;
-}
-
-footer a {
-  color: #ccc;
-  text-decoration: underline;
-}
-footer a:hover {
-  color: var(--white);
 }
 
 /* === BACK TO TOP === */
