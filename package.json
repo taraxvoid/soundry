@@ -10,6 +10,9 @@
     "preview": "astro preview",
     "check": "astro check",
     "serve:cms": "bunx decap-server",
+    "generate:logo": "bun run scripts/generate-logo-png.ts",
+    "generate:favicons": "bun run scripts/generate-favicons.mjs",
+    "generate": "bun run generate:logo && bun run generate:favicons",
     "format": "biome check --write .",
     "lint": "biome check .",
     "prepare": "husky",
@@ -26,6 +29,8 @@
     "@astrojs/check": "^0.9.9",
     "@biomejs/biome": "^2.4.16",
     "@playwright/test": "^1.60.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "favicons": "^7.3.0",
     "husky": "^9.1.7",
     "yaml": "^2.8.3"
   },
