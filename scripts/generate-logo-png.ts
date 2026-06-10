@@ -11,7 +11,10 @@ import { Resvg } from '@resvg/resvg-js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-const src = readFileSync(resolve(__dirname, '../src/components/Logo.astro'), 'utf8')
+const src = readFileSync(
+  resolve(__dirname, '../src/components/Logo.astro'),
+  'utf8',
+)
 
 const match = src.match(/<svg[\s\S]*?<\/svg>/)
 if (!match) throw new Error('No <svg> block found in Logo.astro')
