@@ -87,11 +87,15 @@ footer a:hover {
 }
 
 .nav-logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--white);
+  display: flex;
+  align-items: center;
   text-decoration: none;
   border-bottom: none;
+}
+
+.nav-logo svg {
+  height: 3rem;
+  width: auto;
 }
 
 .nav-links {
