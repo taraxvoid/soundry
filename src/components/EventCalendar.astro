@@ -31,6 +31,9 @@ const formatTime = (time: string) => {
   <div class="section-inner">
     <h2>📅 Upcoming Events</h2>
 
+    <EventSubscribe />
+    <br/>
+
     {
       upcomingEvents.length === 0 ? (
         <p class="no-events">
@@ -91,8 +94,6 @@ const formatTime = (time: string) => {
         </div>
       )
     }
-
-    <EventSubscribe />
   </div>
 </section>
 

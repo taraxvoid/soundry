@@ -68,28 +68,12 @@ footer a:hover {
   color: var(--white);
 }
 
-/* === PIANO KEY NAV === */
 .site-header {
   background: var(--primary-dark);
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.piano-keys {
-  display: flex;
-  gap: 2px;
-  height: 8px;
-  background: var(--dark);
-  overflow: hidden;
-}
-.piano-key {
-  flex: 1;
-  background: var(--white);
-}
-.piano-key:nth-child(odd) {
-  background: var(--dark);
 }
 
 .nav-inner {

@@ -1,15 +1,12 @@
 import { defineCollection } from 'astro:content'
 import { glob } from 'astro/loaders'
-import { z } from 'zod'
+import { z } from 'astro/zod'
 
 const events = defineCollection({
   loader: glob({ pattern: '**/*.yaml', base: './src/content/events' }),
   schema: z.object({
     title: z.string(),
-    date: z.union([
-      z.string(),
-      z.date().transform((d) => d.toISOString().slice(0, 10)),
-    ]),
+    date: z.string(),
     time: z.string(), // HH:MM 24h
     endTime: z.string().optional(),
     location: z.string(),
