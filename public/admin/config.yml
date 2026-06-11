@@ -12,6 +12,7 @@ backend:
   auth_token_endpoint: /sites/1833423d-6ad8-4385-bb6f-b5d6f14d4661/token
   gateway_url: https://gateway.decapbridge.com
 
+publish_mode: editorial_workflow
 logo_url: https://soundryomaha.org/images/logo.png
 media_folder: public/images/uploads
 public_folder: /images/uploads
