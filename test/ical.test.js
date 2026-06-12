@@ -26,7 +26,7 @@ describe('generateFeedICS', () => {
 
   test('includes upcoming events as VEVENTs', () => {
     const ics = generateFeedICS([{ data: baseEvent, id: 'test-show' }])
-    expect(ics).toContain('UID:test-show@omahasoundry.com')
+    expect(ics).toContain('UID:test-show@soundryomaha.org')
     expect(ics).toContain('SUMMARY:Test Show')
     expect(ics).toContain('DTSTART;TZID=America/Chicago:20260612T200000')
     expect(ics).toContain('LOCATION:Church Arthouse (Omaha)')
@@ -67,7 +67,7 @@ describe('generateEventICS', () => {
 
   test('UID is slug-based', () => {
     const ics = generateEventICS(baseEvent, 'my-event')
-    expect(ics).toContain('UID:my-event@omahasoundry.com')
+    expect(ics).toContain('UID:my-event@soundryomaha.org')
   })
 
   test('endTime overrides default +90min', () => {

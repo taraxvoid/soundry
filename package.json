@@ -9,6 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "check:content": "astro sync",
     "serve:cms": "bunx decap-server",
     "generate:logo": "bun run scripts/generate-logo-png.ts",
     "generate:favicons": "bun run scripts/generate-favicons.mjs",

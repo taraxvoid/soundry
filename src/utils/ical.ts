@@ -38,14 +38,14 @@ function buildVEvent(data: EventData, slug: string): string {
 
   return [
     'BEGIN:VEVENT',
-    `UID:${slug}@omahasoundry.com`,
+    `UID:${slug}@soundryomaha.org`,
     `DTSTAMP:${stamp()}`,
     `DTSTART;TZID=America/Chicago:${dateStr}T${startTime}`,
     `DTEND;TZID=America/Chicago:${dateStr}T${endTime}`,
     `SUMMARY:${data.title}`,
     `DESCRIPTION:${desc}`,
     `LOCATION:${data.location}`,
-    'URL:https://omahasoundry.com/',
+    'URL:https://soundryomaha.org/',
     'STATUS:CONFIRMED',
     `SEQUENCE:${data.revision ?? 0}`,
     'END:VEVENT',

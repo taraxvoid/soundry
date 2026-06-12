@@ -1,1 +1,4 @@
-bun run lint
+bun run format
+git add -u
+bun check:content
+
