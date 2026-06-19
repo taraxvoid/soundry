@@ -97,6 +97,47 @@ test('events calendar lists upcoming events with calendar links', async ({
   await expect(addToCalendar).toHaveAttribute('href', /\/events\/.+\.ics$/)
 })
 
+test('hides past events and keeps future events visible', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-06-20T12:00:00'))
+  await page.goto('/')
+
+  await expect(
+    page.locator('wa-card[data-event-date="2026-06-09"]'),
+  ).toHaveAttribute('hidden', '')
+  await expect(
+    page.locator('wa-card[data-event-date="2026-06-16"]'),
+  ).toHaveAttribute('hidden', '')
+  await expect(
+    page.locator('wa-card[data-event-date="2026-07-28"]'),
+  ).not.toHaveAttribute('hidden', '')
+  await expect(page.locator('#no-events-message')).toHaveAttribute('hidden', '')
+})
+
+test('shows the no-events message once every event is in the past', async ({
+  page,
+}) => {
+  await page.clock.setFixedTime(new Date('2027-01-01T12:00:00'))
+  await page.goto('/')
+
+  const cards = page.locator('#calendar wa-card[data-event-date]')
+  await expect(cards.first()).toHaveAttribute('hidden', '')
+  await expect(cards.last()).toHaveAttribute('hidden', '')
+  await expect(page.locator('#no-events-message')).not.toHaveAttribute(
+    'hidden',
+    '',
+  )
+})
+
+test('shows all events when every event is in the future', async ({ page }) => {
+  await page.clock.setFixedTime(new Date('2026-01-01T12:00:00'))
+  await page.goto('/')
+
+  const cards = page.locator('#calendar wa-card[data-event-date]')
+  await expect(cards.first()).not.toHaveAttribute('hidden', '')
+  await expect(cards.last()).not.toHaveAttribute('hidden', '')
+  await expect(page.locator('#no-events-message')).toHaveAttribute('hidden', '')
+})
+
 test('email signup form requires an email address', async ({ page }) => {
   await page.goto('/')
   const form = page.locator('#signup-form')
