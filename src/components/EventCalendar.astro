@@ -3,10 +3,9 @@ import { getCollection } from 'astro:content'
 import EventSubscribe from './EventSubscribe.astro'
 
 const allEvents = await getCollection('events')
-const todayStr = new Date().toISOString().split('T')[0]
-const upcomingEvents = allEvents
-    .filter((e) => e.data.date >= todayStr)
-    .sort((a, b) => a.data.date.localeCompare(b.data.date))
+const sortedEvents = allEvents.sort((a, b) =>
+    a.data.date.localeCompare(b.data.date),
+)
 
 const formatDate = (dateStr: string) => {
     const date = new Date(`${dateStr}T12:00:00`)
@@ -34,15 +33,15 @@ const formatTime = (time: string) => {
     <EventSubscribe />
     <br/>
 
+    <p class="no-events" id="no-events-message" hidden>
+      No upcoming events scheduled yet — check back soon!
+    </p>
+
     {
-      upcomingEvents.length === 0 ? (
-        <p class="no-events">
-          No upcoming events scheduled yet — check back soon!
-        </p>
-      ) : (
-        <div class="events-grid">
-          {upcomingEvents.map((event) => (
-            <wa-card>
+      sortedEvents.length > 0 && (
+        <div class="events-grid" id="events-grid">
+          {sortedEvents.map((event) => (
+            <wa-card data-event-date={event.data.date}>
               <div class="flex-card-inner">
                 {event.data.image && (
                   <img
@@ -97,6 +96,23 @@ const formatTime = (time: string) => {
   </div>
 </section>
 
+<script>
+  import { isEventPast } from '../utils/eventVisibility'
+
+  const todayStr = new Date().toISOString().split('T')[0]
+  const grid = document.getElementById('events-grid')
+  const noEventsMessage = document.getElementById('no-events-message')
+
+  let visibleCount = 0
+  for (const card of grid?.querySelectorAll('[data-event-date]') ?? []) {
+    const isPast = isEventPast(card.getAttribute('data-event-date') ?? '', todayStr)
+    card.toggleAttribute('hidden', isPast)
+    if (!isPast) visibleCount++
+  }
+
+  noEventsMessage?.toggleAttribute('hidden', visibleCount > 0)
+</script>
+
 <style>
   .flex-card-inner {
     display: flex;
@@ -116,5 +132,8 @@ const formatTime = (time: string) => {
     max-height: 8rem;
     object-fit: cover;
     border-radius: 4px;
+  }
+  wa-card[hidden] {
+    display: none !important;
   }
 </style>
