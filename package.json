@@ -17,7 +17,7 @@
         "format": "biome check --write .",
         "lint": "biome check .",
         "prepare": "husky",
-        "test": "bun test test/data.test.js test/ical.test.js test/build.test.js test/eventVisibility.test.js",
+        "test": "bun test test/*.test.js",
         "test:e2e": "playwright test"
     },
     "dependencies": {
