@@ -12,8 +12,8 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 const src = readFileSync(
-  resolve(__dirname, '../src/components/Logo.astro'),
-  'utf8',
+    resolve(__dirname, '../src/components/Logo.astro'),
+    'utf8',
 )
 
 const match = src.match(/<svg[\s\S]*?<\/svg>/)
@@ -23,11 +23,11 @@ const svg = match[0]
 const fontPath = resolve(__dirname, 'fonts/LiberationSans-Bold.ttf')
 
 const resvg = new Resvg(svg, {
-  font: {
-    loadSystemFonts: false,
-    fontFiles: [fontPath],
-    defaultFontFamily: 'Liberation Sans',
-  },
+    font: {
+        loadSystemFonts: false,
+        fontFiles: [fontPath],
+        defaultFontFamily: 'Liberation Sans',
+    },
 })
 
 const png = resvg.render().asPng()

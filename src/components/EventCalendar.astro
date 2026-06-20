@@ -5,25 +5,25 @@ import EventSubscribe from './EventSubscribe.astro'
 const allEvents = await getCollection('events')
 const todayStr = new Date().toISOString().split('T')[0]
 const upcomingEvents = allEvents
-  .filter((e) => e.data.date >= todayStr)
-  .sort((a, b) => a.data.date.localeCompare(b.data.date))
+    .filter((e) => e.data.date >= todayStr)
+    .sort((a, b) => a.data.date.localeCompare(b.data.date))
 
 const formatDate = (dateStr: string) => {
-  const date = new Date(`${dateStr}T12:00:00`)
-  return date.toLocaleDateString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  })
+    const date = new Date(`${dateStr}T12:00:00`)
+    return date.toLocaleDateString('en-US', {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric',
+    })
 }
 
 const formatTime = (time: string) => {
-  const [hours, minutes] = time.split(':')
-  const hour = parseInt(hours, 10)
-  const ampm = hour >= 12 ? 'PM' : 'AM'
-  const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour
-  return `${displayHour}:${minutes} ${ampm}`
+    const [hours, minutes] = time.split(':')
+    const hour = parseInt(hours, 10)
+    const ampm = hour >= 12 ? 'PM' : 'AM'
+    const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour
+    return `${displayHour}:${minutes} ${ampm}`
 }
 ---
 
