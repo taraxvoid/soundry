@@ -117,6 +117,20 @@ footer a:hover {
     color: #fef9c3;
 }
 
+.nav-cta {
+    padding: 0.25rem 0.75rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    border-radius: 999px;
+    font-weight: 600 !important;
+    transition:
+        background 0.15s,
+        color 0.15s !important;
+}
+.nav-cta:hover {
+    background: var(--white);
+    color: var(--primary-dark) !important;
+}
+
 .nav-toggle {
     display: flex;
     background: none;
@@ -191,11 +205,22 @@ main {
     background: linear-gradient(135deg, var(--cream) 0%, #e8e2d8 100%);
 }
 
+.events-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid rgba(139, 44, 44, 0.15);
+}
+
 .events-section h2 {
     font-size: 1.75rem;
     font-weight: 700;
     color: var(--dark);
-    margin: 0 0 1.5rem;
+    margin: 0;
 }
 
 .events-grid {
@@ -287,7 +312,6 @@ wa-card:hover {
 
 /* === CALENDAR SUBSCRIBE === */
 .calendar-subscribe {
-    margin-top: 1.5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.75rem;
@@ -334,13 +358,6 @@ wa-card:hover {
     max-width: 680px;
     margin: 0;
     opacity: 0.95;
-}
-
-.hero-ctas {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
 }
 
 .btn-hero-primary {
@@ -460,11 +477,7 @@ wa-card:hover {
 
 /* === EMAIL SIGNUP === */
 .signup-section {
-    background: linear-gradient(
-        135deg,
-        var(--cream) 0%,
-        var(--light-cream) 100%
-    );
+    background: var(--white);
 }
 
 .signup-section h2 {

@@ -19,14 +19,15 @@ test('has correct title and meta description', async ({ page }) => {
 test('nav links point to expected sections', async ({ page }) => {
     await page.goto('/')
     const nav = page.locator('.nav-links')
-    await expect(
-        nav.getByRole('link', { name: 'Upcoming Events' }),
-    ).toHaveAttribute('href', '#calendar')
+    await expect(nav.getByRole('link', { name: 'Events' })).toHaveAttribute(
+        'href',
+        '#calendar',
+    )
     await expect(nav.getByRole('link', { name: 'About' })).toHaveAttribute(
         'href',
         '#about',
     )
-    await expect(nav.getByRole('link', { name: 'Support' })).toHaveAttribute(
+    await expect(nav.getByRole('link', { name: 'Donate' })).toHaveAttribute(
         'href',
         '#donate',
     )

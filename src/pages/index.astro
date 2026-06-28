@@ -13,16 +13,7 @@ import Base from '../layouts/Base.astro'
   <!-- About / Hero -->
   <section class="section hero-section" id="about">
     <div class="section-inner">
-      <h1>Experimental Music Education</h1>
-      <p>
-        Pioneering sound-focused workshops throughout the Midwest, emphasizing
-        the significance of playing, listening, creating, and collaborative
-        work.
-      </p>
-      <div class="hero-ctas">
-        <a href="#calendar" class="btn-hero-primary">See Upcoming Events</a>
-        <a href="#signup" class="btn-hero-secondary">Join Email List</a>
-      </div>
+      <h1>Omaha Experimental Music Workshops</h1>
     </div>
   </section>
 
@@ -32,8 +23,7 @@ import Base from '../layouts/Base.astro'
   <!-- Email Signup -->
   <section class="section signup-section" id="signup">
     <div class="section-inner">
-      <h2>Email List</h2>
-      <p class="lead">Be the first to hear about event announcements</p>
+      <h2>Join Soundry Email List</h2>
       <form
         name="email-signup"
         method="POST"
@@ -56,20 +46,11 @@ import Base from '../layouts/Base.astro'
           />
         </div>
 
-        <div class="form-group">
-          <label for="signup-name">Your Name (optional)</label>
-          <input
-            type="text"
-            id="signup-name"
-            name="name"
-            placeholder="Your name"
-          />
-        </div>
 
         <div id="signup-message" class="signup-message"></div>
 
         <button type="submit" class="signup-button" id="signup-submit">
-          Subscribe
+          Join the Email List
         </button>
       </form>
     </div>
@@ -80,10 +61,9 @@ import Base from '../layouts/Base.astro'
     <div class="section-inner">
       <div class="donate-container">
         <div class="donate-content">
-          <h2>Support Soundry</h2>
+          <h2>Donate to Soundry</h2>
           <p>
-            Your support enables hands-on workshops, instrument building, deep
-            listening practices, and DIY music technology for our community.
+            Your donation directly enables hands-on workshops and DIY music in Omaha.
           </p>
         </div>
         <div class="donate-methods">
@@ -126,7 +106,6 @@ import Base from '../layouts/Base.astro'
       <div class="instagram-card">
         <wa-icon name="instagram" family="brands" class="instagram-icon"></wa-icon>
         <h2>@omahasoundry</h2>
-        <p>Workshop photos, event announcements, and the Omaha experimental music scene</p>
         <a
           href="https://www.instagram.com/omahasoundry/"
           target="_blank"

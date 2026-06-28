@@ -28,9 +28,10 @@ const formatTime = (time: string) => {
 
 <section class="section events-section" id="calendar">
   <div class="section-inner">
-    <h2><wa-icon name="calendar" aria-hidden="true"></wa-icon> Upcoming Events</h2>
-
-    <EventSubscribe />
+    <div class="events-header">
+      <h2><wa-icon name="calendar" aria-hidden="true"></wa-icon> Upcoming Events</h2>
+      <EventSubscribe />
+    </div>
 
     <p class="no-events" id="no-events-message" hidden>
       No upcoming events scheduled yet — check back soon!
@@ -52,13 +53,11 @@ const formatTime = (time: string) => {
                 <div>
                   <div class="event-header">
                     <h3 class="event-title">{event.data.title}</h3>
-                    <a
-                      href={`/events/${event.id}.ics`}
-                      class="event-links"
-                      style="margin: 0;"
-                    >
-                      <span><wa-icon name="calendar" aria-hidden="true"></wa-icon> Add to Calendar</span>
-                    </a>
+                    <div class="event-links" style="margin: 0;">
+                      <a href={`/events/${event.id}.ics`}>
+                        <wa-icon name="calendar" aria-hidden="true"></wa-icon> Add to Calendar
+                      </a>
+                    </div>
                   </div>
                   <span class="event-date-badge">
                     {formatDate(event.data.date)}
