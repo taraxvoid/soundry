@@ -82,6 +82,7 @@ test('donate section links to Venmo and PayPal', async ({ page }) => {
 test('events calendar lists upcoming events with calendar links', async ({
     page,
 }) => {
+    await page.clock.setFixedTime(new Date('2026-01-01T12:00:00'))
     await page.goto('/')
     const calendar = page.locator('#calendar')
     await expect(
@@ -102,7 +103,7 @@ test('hides past events and keeps future events visible', async ({ page }) => {
     await page.goto('/')
 
     await expect(
-        page.locator('wa-card[data-event-date="2026-06-09"]'),
+        page.locator('wa-card[data-event-date="2026-06-16"]'),
     ).toHaveAttribute('hidden', '')
     await expect(
         page.locator('wa-card[data-event-date="2026-06-16"]'),
