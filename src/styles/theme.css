@@ -336,6 +336,53 @@ wa-card:hover {
     opacity: 0.95;
 }
 
+.hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+}
+
+.btn-hero-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.25rem;
+    background: var(--white);
+    color: var(--primary-dark);
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: none;
+    transition: background 0.15s;
+}
+.btn-hero-primary:hover {
+    background: var(--cream);
+}
+
+.btn-hero-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.25rem;
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: none;
+    transition:
+        border-color 0.15s,
+        background 0.15s;
+}
+.btn-hero-secondary:hover {
+    border-color: var(--white);
+    background: rgba(255, 255, 255, 0.1);
+}
+
 /* === DONATE === */
 .donate-section {
     background: linear-gradient(
@@ -519,24 +566,30 @@ wa-card:hover {
     text-align: center;
 }
 
-.instagram-section p {
-    font-size: 1.1rem;
-    margin: 0 0 1.5rem;
-}
-
-.instagram-embed {
+.instagram-card {
     display: flex;
-    justify-content: center;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
 }
 
-.instagram-link a {
+.instagram-icon {
+    font-size: 3rem;
     color: var(--primary-dark);
-    font-weight: 600;
-    text-decoration: underline;
 }
-.instagram-link a:hover {
-    color: var(--primary-light);
+
+.instagram-card h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0;
+}
+
+.instagram-card p {
+    color: #555;
+    max-width: 480px;
+    margin: 0;
+    line-height: 1.6;
 }
 
 /* === BACK TO TOP === */

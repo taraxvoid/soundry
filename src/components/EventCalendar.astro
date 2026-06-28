@@ -28,10 +28,9 @@ const formatTime = (time: string) => {
 
 <section class="section events-section" id="calendar">
   <div class="section-inner">
-    <h2>📅 Upcoming Events</h2>
+    <h2><wa-icon name="calendar" aria-hidden="true"></wa-icon> Upcoming Events</h2>
 
     <EventSubscribe />
-    <br/>
 
     <p class="no-events" id="no-events-message" hidden>
       No upcoming events scheduled yet — check back soon!
@@ -58,19 +57,19 @@ const formatTime = (time: string) => {
                       class="event-links"
                       style="margin: 0;"
                     >
-                      <span>📅 Add to Calendar</span>
+                      <span><wa-icon name="calendar" aria-hidden="true"></wa-icon> Add to Calendar</span>
                     </a>
                   </div>
                   <span class="event-date-badge">
                     {formatDate(event.data.date)}
                   </span>
                   <div class="event-details">
-                    <span>🕗 {formatTime(event.data.time)}</span>
-                    <span>📍 {event.data.location}</span>
+                    <span><wa-icon name="clock" aria-hidden="true"></wa-icon> {formatTime(event.data.time)}</span>
+                    <span><wa-icon name="location-dot" aria-hidden="true"></wa-icon> {event.data.location}</span>
                     {event.data.price !== '0' && (
-                      <span>🎟 ${event.data.price}</span>
+                      <span><wa-icon name="ticket" aria-hidden="true"></wa-icon> ${event.data.price}</span>
                     )}
-                    {event.data.price === '0' && <span>🎟 Free</span>}
+                    {event.data.price === '0' && <span><wa-icon name="ticket" aria-hidden="true"></wa-icon> Free</span>}
                   </div>
                   {event.data.description && (
                     <p class="event-description">{event.data.description}</p>
