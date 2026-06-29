@@ -13,7 +13,12 @@ import Base from '../layouts/Base.astro'
   <!-- About / Hero -->
   <section class="section hero-section" id="about">
     <div class="section-inner">
-      <h1>Omaha Experimental Music Workshops</h1>
+      <h1>Omaha's Experimental Music Workshops</h1>
+      <p>
+        Pioneering workshops throughout the Midwest, emphasizing
+        the significance of playing, listening, creating, and collaborative
+        work.
+      </p>
     </div>
   </section>
 
@@ -23,7 +28,8 @@ import Base from '../layouts/Base.astro'
   <!-- Email Signup -->
   <section class="section signup-section" id="signup">
     <div class="section-inner">
-      <h2>Join Soundry Email List</h2>
+      <h2>Email List</h2>
+      <p class="lead">Be the first to hear about event announcements</p>
       <form
         name="email-signup"
         method="POST"
@@ -46,11 +52,20 @@ import Base from '../layouts/Base.astro'
           />
         </div>
 
+        <div class="form-group">
+          <label for="signup-name">Your Name (optional)</label>
+          <input
+            type="text"
+            id="signup-name"
+            name="name"
+            placeholder="Your name"
+          />
+        </div>
 
         <div id="signup-message" class="signup-message"></div>
 
         <button type="submit" class="signup-button" id="signup-submit">
-          Join the Email List
+          Subscribe
         </button>
       </form>
     </div>
@@ -61,9 +76,10 @@ import Base from '../layouts/Base.astro'
     <div class="section-inner">
       <div class="donate-container">
         <div class="donate-content">
-          <h2>Donate to Soundry</h2>
+          <h2>Support Soundry</h2>
           <p>
-            Your donation directly enables hands-on workshops and DIY music in Omaha.
+            Your support enables hands-on workshops, instrument building, deep
+            listening practices, and DIY music technology for our community.
           </p>
         </div>
         <div class="donate-methods">
@@ -106,6 +122,7 @@ import Base from '../layouts/Base.astro'
       <div class="instagram-card">
         <wa-icon name="instagram" family="brands" class="instagram-icon"></wa-icon>
         <h2>@omahasoundry</h2>
+        <p>Workshop photos, event announcements, and the Omaha experimental music scene</p>
         <a
           href="https://www.instagram.com/omahasoundry/"
           target="_blank"

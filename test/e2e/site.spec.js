@@ -21,11 +21,7 @@ test('nav links point to expected sections', async ({ page }) => {
     const nav = page.locator('.nav-links')
     await expect(nav.getByRole('link', { name: 'Events' })).toHaveAttribute(
         'href',
-        '#calendar',
-    )
-    await expect(nav.getByRole('link', { name: 'About' })).toHaveAttribute(
-        'href',
-        '#about',
+        '#events',
     )
     await expect(nav.getByRole('link', { name: 'Donate' })).toHaveAttribute(
         'href',
@@ -36,7 +32,15 @@ test('nav links point to expected sections', async ({ page }) => {
         '#signup',
     )
 
-    await expect(page.locator('#calendar')).toBeAttached()
+    const instagram = nav.getByRole('link', { name: 'Instagram' })
+    await expect(instagram).toHaveAttribute(
+        'href',
+        'https://www.instagram.com/omahasoundry/',
+    )
+    await expect(instagram).toHaveAttribute('target', '_blank')
+    await expect(instagram).toHaveAttribute('rel', 'noopener noreferrer')
+
+    await expect(page.locator('#events')).toBeAttached()
     await expect(page.locator('#about')).toBeAttached()
     await expect(page.locator('#donate')).toBeAttached()
     await expect(page.locator('#signup')).toBeAttached()
@@ -85,7 +89,7 @@ test('events calendar lists upcoming events with calendar links', async ({
 }) => {
     await page.clock.setFixedTime(new Date('2026-01-01T12:00:00'))
     await page.goto('/')
-    const calendar = page.locator('#calendar')
+    const calendar = page.locator('#events')
     await expect(
         calendar.getByRole('heading', { name: /Upcoming Events/ }),
     ).toBeVisible()
@@ -124,7 +128,7 @@ test('shows the no-events message once every event is in the past', async ({
     await page.clock.setFixedTime(new Date('2027-01-01T12:00:00'))
     await page.goto('/')
 
-    const cards = page.locator('#calendar wa-card[data-event-date]')
+    const cards = page.locator('#events wa-card[data-event-date]')
     await expect(cards.first()).toHaveAttribute('hidden', '')
     await expect(cards.last()).toHaveAttribute('hidden', '')
     await expect(page.locator('#no-events-message')).not.toHaveAttribute(
@@ -137,7 +141,7 @@ test('shows all events when every event is in the future', async ({ page }) => {
     await page.clock.setFixedTime(new Date('2026-01-01T12:00:00'))
     await page.goto('/')
 
-    const cards = page.locator('#calendar wa-card[data-event-date]')
+    const cards = page.locator('#events wa-card[data-event-date]')
     await expect(cards.first()).not.toHaveAttribute('hidden', '')
     await expect(cards.last()).not.toHaveAttribute('hidden', '')
     await expect(page.locator('#no-events-message')).toHaveAttribute(
