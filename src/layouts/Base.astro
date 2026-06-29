@@ -9,7 +9,7 @@ interface Props {
 
 const {
     title = "Soundry — Omaha's Experimental Music Education Workshops",
-    description = 'Soundry is experimental community-driven education in Omaha, focused on sound, collaboration, and creative inquiry.',
+    description = 'Soundry activates the local Omaha community to enrich their creative practice with experimental education workshops.',
 } = Astro.props
 ---
 
@@ -41,11 +41,18 @@ const {
       <div class="nav-inner">
         <a href="/" class="nav-logo"><Logo /></a>
         <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#calendar" class="nav-cta">Events</a></li>
-          <li><a href="#signup" class="nav-cta">Email List</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#signup">Email List</a></li>
           <li><a href="#donate">Donate</a></li>
-          <li><a href="#instagram">Instagram</a></li>
+          <li>
+            <a
+              href="https://www.instagram.com/omahasoundry/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              class="nav-instagram"
+            ><wa-icon name="instagram" family="brands"></wa-icon></a>
+          </li>
         </ul>
         <button
           id="nav-toggle"
@@ -88,11 +95,14 @@ const {
         </button>
       </div>
       <nav id="nav-mobile" class="nav-mobile" aria-label="Mobile navigation">
-        <a href="#about">About</a>
-        <a href="#calendar">Events</a>
+        <a href="#events">Events</a>
         <a href="#signup">Email List</a>
         <a href="#donate">Donate</a>
-        <a href="#instagram">Instagram</a>
+        <a
+          href="https://www.instagram.com/omahasoundry/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Instagram</a>
       </nav>
     </header>
 

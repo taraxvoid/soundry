@@ -117,18 +117,10 @@ footer a:hover {
     color: #fef9c3;
 }
 
-.nav-cta {
-    padding: 0.25rem 0.75rem;
-    border: 1.5px solid rgba(255, 255, 255, 0.6);
-    border-radius: 999px;
-    font-weight: 600 !important;
-    transition:
-        background 0.15s,
-        color 0.15s !important;
-}
-.nav-cta:hover {
-    background: var(--white);
-    color: var(--primary-dark) !important;
+.nav-instagram {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
 }
 
 .nav-toggle {
@@ -183,6 +175,7 @@ main {
 .section {
     padding: 2rem 0;
     border-bottom: 2px solid rgba(139, 44, 44, 0.1);
+    scroll-margin-top: 4rem;
 }
 .section:last-of-type {
     border-bottom: none;
