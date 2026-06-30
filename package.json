@@ -43,7 +43,7 @@
         "yaml": "^2.9.0"
     },
     "volta": {
-        "node": "24.15.0"
+        "node": "24.18.0"
     },
     "author": "Tara <1711810+taraxvoid@users.noreply.github.com>",
     "license": "MIT"
