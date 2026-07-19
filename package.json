@@ -27,7 +27,8 @@
         "test:e2e:desktop": "bun run build && playwright test --project=desktop-chrome",
         "test:e2e:all": "bun run build && playwright test",
         "test:e2e:ui": "bun run build && playwright test --ui",
-        "test:e2e:headed": "bun run build && playwright test --headed"
+        "test:e2e:headed": "bun run build && playwright test --headed",
+        "postinstall": "bunx @biomejs/biome migrate --write"
     },
     "dependencies": {
         "@astrojs/sitemap": "^3.7.3",
