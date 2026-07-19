@@ -34,6 +34,8 @@
     "dependencies": {
         "@astrojs/sitemap": "^3.7.3",
         "@awesome.me/webawesome": "^3.10.0",
+        "@fontsource/atkinson-hyperlegible": "^5.2.8",
+        "@fontsource/bevan": "^5.2.7",
         "astro": "7.1.1",
         "typescript": "^6.0.3"
     },

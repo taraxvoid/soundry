@@ -9,8 +9,8 @@ const response = await favicons(source, {
     path: '/',
     appName: 'Soundry',
     appDescription: "Soundry — Omaha's Experimental Music Education Workshops",
-    background: '#f5f1eb',
-    theme_color: '#8b2c2c',
+    background: '#e6dcc3',
+    theme_color: '#6e3226',
     icons: {
         android: true,
         appleIcon: true,

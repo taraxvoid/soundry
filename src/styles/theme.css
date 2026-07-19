@@ -1,12 +1,19 @@
 :root {
-    --primary-dark: #8b2c2c;
-    --primary-medium: #a73c3c;
-    --primary-light: #c75555;
-    --primary-lighter: #e8a8a8;
-    --dark: #1a1a1a;
-    --white: #fafafa;
-    --cream: #f5f1eb;
-    --light-cream: #f0ebe5;
+    /* Toy-piano palette: rust-lacquer case, aged ivory keys — not bright
+       Soviet red, not a clean/sterile off-white. */
+    --primary-dark: #6e3226;
+    --primary-medium: #83402f;
+    --primary-light: #9c5240;
+    --primary-lighter: #a97e64;
+    --dark: #2b2320;
+    --white: #f7f2e7;
+    --cream: #e6dcc3;
+    --light-cream: #d9cca8;
+    --brass: #e0b876;
+
+    --font-display: "Bevan", "Georgia", serif;
+    --font-body: "Atkinson Hyperlegible", "Helvetica", "system-ui", sans-serif;
+
     scroll-behavior: smooth;
 }
 
@@ -15,7 +22,7 @@ html {
 }
 
 body {
-    font-family: "Helvetica", "system-ui", sans-serif;
+    font-family: var(--font-body);
     background: var(--cream);
     color: var(--dark);
     margin: 0;
@@ -23,6 +30,15 @@ body {
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+.event-title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: 0.01em;
 }
 
 /* Skip link */
@@ -114,7 +130,7 @@ footer a:hover {
     border-bottom: none;
 }
 .nav-links a:hover {
-    color: #fef9c3;
+    color: var(--brass);
 }
 
 .nav-instagram {
@@ -151,7 +167,7 @@ footer a:hover {
     border-bottom: none;
 }
 .nav-mobile a:hover {
-    color: #fef9c3;
+    color: var(--brass);
 }
 .nav-mobile.open {
     display: flex;
@@ -177,12 +193,25 @@ main:focus-visible {
 
 /* Full-width sections with inner max-width container */
 .section {
-    padding: 2rem 0;
-    border-bottom: 2px solid rgba(139, 44, 44, 0.1);
+    position: relative;
+    padding: 2rem 0 3rem;
     scroll-margin-top: 4rem;
 }
 .section:last-of-type {
-    border-bottom: none;
+    padding-bottom: 2rem;
+}
+.section:not(:last-of-type)::after {
+    content: "";
+    position: absolute;
+    bottom: 0.75rem;
+    left: 0;
+    right: 0;
+    height: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='12' viewBox='0 0 40 12'%3E%3Cpath d='M0 6 Q5 0.5 10 6 T20 6 T30 6 T40 6' fill='none' stroke='%232b2320' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: 40px 12px;
+    opacity: 0.35;
 }
 
 .section-inner {
@@ -199,7 +228,11 @@ main:focus-visible {
 
 /* === EVENTS SECTION === */
 .events-section {
-    background: linear-gradient(135deg, var(--cream) 0%, #e8e2d8 100%);
+    background: linear-gradient(
+        135deg,
+        var(--cream) 0%,
+        var(--light-cream) 100%
+    );
 }
 
 .events-header {
@@ -210,7 +243,7 @@ main:focus-visible {
     gap: 0.75rem;
     margin-bottom: 1.5rem;
     padding-bottom: 1rem;
-    border-bottom: 2px solid rgba(139, 44, 44, 0.15);
+    border-bottom: 2px solid rgba(110, 50, 38, 0.15);
 }
 
 .events-section h2 {
@@ -228,7 +261,7 @@ main:focus-visible {
 
 .no-events {
     font-style: italic;
-    color: #999;
+    color: #5f5342;
 }
 
 wa-card {
@@ -277,7 +310,7 @@ wa-card:hover {
 }
 
 .event-description {
-    color: #555;
+    color: #5c5044;
     margin: 0 0 0.75rem;
     line-height: 1.5;
 }
@@ -294,7 +327,7 @@ wa-card:hover {
     align-items: center;
     padding: 0.35rem 0.75rem;
     border-radius: 4px;
-    background: #faf0f0;
+    background: #efe4cd;
     border: 1px solid var(--primary-lighter);
     color: var(--primary-dark);
     font-size: 0.85rem;
@@ -304,7 +337,7 @@ wa-card:hover {
     transition: background 0.15s;
 }
 .event-links a:hover {
-    background: #f5e0e0;
+    background: #e6d6b4;
 }
 
 /* === CALENDAR SUBSCRIBE === */
@@ -520,7 +553,7 @@ wa-card:hover {
 .form-group input:focus {
     outline: none;
     border-color: var(--primary-light);
-    box-shadow: 0 0 0 3px rgba(139, 44, 44, 0.1);
+    box-shadow: 0 0 0 3px rgba(110, 50, 38, 0.1);
 }
 
 .signup-message {
@@ -572,7 +605,11 @@ wa-card:hover {
 
 /* === INSTAGRAM === */
 .instagram-section {
-    background: linear-gradient(135deg, var(--cream) 0%, #e8e2d8 100%);
+    background: linear-gradient(
+        135deg,
+        var(--cream) 0%,
+        var(--light-cream) 100%
+    );
     text-align: center;
 }
 
@@ -596,7 +633,7 @@ wa-card:hover {
 }
 
 .instagram-card p {
-    color: #555;
+    color: #5c5044;
     max-width: 480px;
     margin: 0;
     line-height: 1.6;
@@ -619,7 +656,7 @@ wa-card:hover {
     height: 2.75rem;
     font-size: 1.4rem;
     cursor: pointer;
-    box-shadow: 0 4px 12px rgba(139, 44, 44, 0.3);
+    box-shadow: 0 4px 12px rgba(110, 50, 38, 0.3);
     opacity: 0;
     visibility: hidden;
     transition:
