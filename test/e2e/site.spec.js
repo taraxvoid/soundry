@@ -17,6 +17,7 @@ test('has correct title and meta description', async ({ page }) => {
 })
 
 test('nav links point to expected sections', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 800 })
     await page.goto('/')
     const nav = page.locator('.nav-links')
     await expect(nav.getByRole('link', { name: 'Events' })).toHaveAttribute(
