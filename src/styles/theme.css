@@ -170,6 +170,10 @@ footer a:hover {
 main {
     flex: 1;
 }
+main:focus-visible {
+    outline: 3px solid var(--primary-dark);
+    outline-offset: 2px;
+}
 
 /* Full-width sections with inner max-width container */
 .section {
@@ -554,7 +558,7 @@ wa-card:hover {
         transform 0.1s;
 }
 .signup-button:hover {
-    background: var(--primary-light);
+    background: var(--primary-medium);
     transform: scale(1.02);
 }
 .signup-button:active {
@@ -633,4 +637,19 @@ wa-card:hover {
 }
 #backToTop:hover {
     transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    :root,
+    html {
+        scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }

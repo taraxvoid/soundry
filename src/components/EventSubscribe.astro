@@ -1,9 +1,12 @@
 ---
+const host = Astro.site?.host ?? 'soundryomaha.org'
+const webcalUrl = `webcal://${host}/events.ics`
+const googleCalendarUrl = `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcalUrl)}`
 ---
 
 <div class="calendar-subscribe">
   <a
-    href="https://calendar.google.com/calendar/r?cid=webcal%3A%2F%2Fomahasoundry.com%2Fevents.ics"
+    href={googleCalendarUrl}
     target="_blank"
     rel="noopener noreferrer"
     class="btn-calendar"

@@ -41,9 +41,20 @@ describe('astro build', () => {
     test('index.html contains calendar subscribe link and autodiscovery', () => {
         const html = readFileSync(join(ROOT, 'dist', 'index.html'), 'utf8')
         expect(html).toContain('calendar.google.com')
+        expect(html).toContain(
+            encodeURIComponent('webcal://soundryomaha.org/events.ics'),
+        )
         expect(html).toContain('rel="alternate"')
         expect(html).toContain('type="text/calendar"')
         expect(html).toContain('/events.ics')
+    })
+
+    test('robots.txt and llms.txt reference the real site domain', () => {
+        const robots = readFileSync(join(ROOT, 'dist', 'robots.txt'), 'utf8')
+        expect(robots).toContain('Sitemap: https://soundryomaha.org/')
+
+        const llms = readFileSync(join(ROOT, 'dist', 'llms.txt'), 'utf8')
+        expect(llms).toContain('https://soundryomaha.org/')
     })
 
     test('per-event ics files are generated', () => {

@@ -16,6 +16,56 @@ test('has correct title and meta description', async ({ page }) => {
     await expect(description).toHaveAttribute('content', /experimental/i)
 })
 
+test('no horizontal scroll at 375px', async ({ page }) => {
+    await page.setViewportSize({ width: 375, height: 812 })
+    await page.goto('/')
+    const overflow = await page.evaluate(
+        () => document.scrollingElement.scrollWidth > window.innerWidth,
+    )
+    expect(overflow).toBe(false)
+})
+
+test('calendar subscribe link points at the real site domain', async ({
+    page,
+}) => {
+    await page.goto('/')
+    const subscribe = page.locator('.calendar-subscribe a')
+    await expect(subscribe).toHaveAttribute(
+        'href',
+        `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(
+            'webcal://soundryomaha.org/events.ics',
+        )}`,
+    )
+})
+
+test('tabbing to the skip link and activating it focuses main content', async ({
+    page,
+}) => {
+    await page.goto('/')
+    const skipLink = page.locator('a.skip-link')
+    await expect(skipLink).toHaveAttribute('href', '#main')
+
+    await page.keyboard.press('Tab')
+    await expect(skipLink).toBeFocused()
+
+    await page.keyboard.press('Enter')
+    await expect(page.locator('#main')).toBeFocused()
+})
+
+test('transitions are near-instant under prefers-reduced-motion', async ({
+    page,
+}) => {
+    await page.emulateMedia({ reducedMotion: 'reduce' })
+    await page.goto('/')
+
+    const duration = await page
+        .locator('.signup-button')
+        .evaluate((el) => getComputedStyle(el).transitionDuration)
+    expect(
+        duration.split(',').every((d) => Number.parseFloat(d) <= 0.001),
+    ).toBe(true)
+})
+
 test('nav links point to expected sections', async ({ page }) => {
     await page.setViewportSize({ width: 1280, height: 800 })
     await page.goto('/')
