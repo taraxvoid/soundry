@@ -18,7 +18,7 @@
         "format": "biome check --write .",
         "lint": "biome check .",
         "prepare": "husky",
-        "test": "npm-run-all -l -p check test:unit -s test:e2e",
+        "test": "bun run build && npm-run-all -l -p check test:unit -s test:e2e:only",
         "test:unit": "vitest run",
         "test:fast": "run-p -l lint test:data",
         "test:data": "vitest run test/data.test.ts",

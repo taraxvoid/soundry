@@ -27,11 +27,11 @@ auth:
 local_backend: true
 
 commit_messages:
-  create: 'Create {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}>'
-  update: 'Update {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}>'
-  delete: 'Delete {{collection}} "{{slug}}" - {{author-name}} <{{author-login}}>'
-  uploadMedia: 'Upload "{{path}}" - {{author-name}} <{{author-login}}>'
-  deleteMedia: 'Delete "{{path}}" - {{author-name}} <{{author-login}}>'
+  create: 'Create {{collection}} "{{slug}}" - {{author-name}}>'
+  update: 'Update {{collection}} "{{slug}}" - {{author-name}}>'
+  delete: 'Delete {{collection}} "{{slug}}" - {{author-name}}>'
+  uploadMedia: 'Upload "{{path}}" - {{author-name}}>'
+  deleteMedia: 'Delete "{{path}}" - {{author-name}}>'
 
 collections:
   - name: events
