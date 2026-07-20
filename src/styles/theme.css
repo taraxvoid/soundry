@@ -110,14 +110,14 @@ footer a:hover {
 }
 
 .nav-logo svg {
-    height: 2.25rem;
+    height: 2rem;
     width: auto;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 0.3rem;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -126,10 +126,13 @@ footer a:hover {
 .nav-key {
     display: inline-flex;
     align-items: center;
-    padding: 0.45rem 0.7rem;
+    justify-content: center;
+    height: 2.5rem;
+    padding: 0 0.5rem;
+    border-radius: 8px;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.875rem;
+    font-weight: 700;
+    font-size: 0.9375rem;
     transition: filter 0.15s;
 }
 .key--white {
@@ -147,24 +150,26 @@ footer a:hover {
     outline: 2px solid var(--brass);
     outline-offset: -2px;
 }
-.nav-links li:first-child .nav-key {
-    border-radius: 4px 0 0 4px;
-}
-.nav-links li:last-child .nav-key {
-    border-radius: 0 4px 4px 0;
-}
 
 .nav-instagram {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    padding: 0 0.45rem;
 }
 
 @media (min-width: 768px) {
     .nav-logo svg {
         height: 3rem;
     }
+    .nav-links {
+        gap: 0.4rem;
+    }
     .nav-key {
-        padding: 0.55rem 1rem;
-        font-size: 1rem;
+        height: 2.75rem;
+        padding: 0 1rem;
+        font-size: 1.125rem;
+    }
+    .nav-instagram {
+        padding: 0 1rem;
     }
 }
 
