@@ -25,6 +25,7 @@
         "test:ical": "vitest run test/ical.test.ts",
         "test:build": "vitest run test/build.test.ts",
         "test:e2e": "bun run build && playwright test --project=mobile-chrome",
+        "test:e2e:only": "playwright test --project=mobile-chrome",
         "test:e2e:desktop": "bun run build && playwright test --project=desktop-chrome",
         "test:e2e:all": "bun run build && playwright test",
         "test:e2e:ui": "bun run build && playwright test --ui",
