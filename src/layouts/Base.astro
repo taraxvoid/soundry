@@ -47,7 +47,7 @@ const year = new Date().getFullYear()
         <a href="/" class="nav-logo"><Logo /></a>
         <ul class="nav-links">
           <li><a href="#events">Events</a></li>
-          <li><a href="#signup">Email List</a></li>
+          <li><a href="#signup">Signup</a></li>
           <li><a href="#donate">Donate</a></li>
           <li>
             <a
@@ -59,56 +59,7 @@ const year = new Date().getFullYear()
             ><wa-icon name="instagram" family="brands"></wa-icon></a>
           </li>
         </ul>
-        <button
-          id="nav-toggle"
-          class="nav-toggle"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-          aria-controls="nav-mobile"
-        >
-          <svg
-            id="icon-open"
-            width="32"
-            height="32"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-          <svg
-            id="icon-close"
-            width="32"
-            height="32"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            style="display: none;"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
       </div>
-      <nav id="nav-mobile" class="nav-mobile" aria-label="Mobile navigation">
-        <a href="#events">Events</a>
-        <a href="#signup">Email List</a>
-        <a href="#donate">Donate</a>
-        <a
-          href="https://www.instagram.com/omahasoundry/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Instagram</a>
-      </nav>
     </header>
 
     <main id="main" tabindex="-1">
@@ -144,30 +95,6 @@ const year = new Date().getFullYear()
     </button>
 
     <script>
-      // Mobile nav toggle
-      const toggle = document.getElementById('nav-toggle')
-      const mobileMenu = document.getElementById('nav-mobile')
-      const iconOpen = document.getElementById('icon-open')
-      const iconClose = document.getElementById('icon-close')
-
-      toggle?.addEventListener('click', () => {
-        const isOpen = mobileMenu?.classList.contains('open')
-        mobileMenu?.classList.toggle('open', !isOpen)
-        iconOpen && (iconOpen.style.display = isOpen ? '' : 'none')
-        iconClose && (iconClose.style.display = isOpen ? 'none' : '')
-        toggle.setAttribute('aria-expanded', String(!isOpen))
-      })
-
-      // Close mobile menu on link click
-      mobileMenu?.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.remove('open')
-          iconOpen && (iconOpen.style.display = '')
-          iconClose && (iconClose.style.display = 'none')
-          toggle?.setAttribute('aria-expanded', 'false')
-        })
-      })
-
       // Back to top
       const backToTop = document.getElementById('backToTop')
       const header = document.querySelector('.site-header')

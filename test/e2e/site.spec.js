@@ -25,16 +25,24 @@ test('no horizontal scroll at 375px', async ({ page }) => {
     expect(overflow).toBe(false)
 })
 
-test('calendar subscribe link points at the real site domain', async ({
+test('calendar subscribe links point at the real site domain', async ({
     page,
 }) => {
     await page.goto('/')
-    const subscribe = page.locator('.calendar-subscribe a')
-    await expect(subscribe).toHaveAttribute(
+    const googleLink = page.locator(
+        '.calendar-subscribe a[href*="calendar.google.com"]',
+    )
+    await expect(googleLink).toHaveAttribute(
         'href',
         `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(
             'webcal://soundryomaha.org/events.ics',
         )}`,
+    )
+
+    const appleLink = page.locator('.calendar-subscribe a[href^="webcal://"]')
+    await expect(appleLink).toHaveAttribute(
+        'href',
+        'webcal://soundryomaha.org/events.ics',
     )
 })
 
@@ -78,7 +86,7 @@ test('nav links point to expected sections', async ({ page }) => {
         'href',
         '#donate',
     )
-    await expect(nav.getByRole('link', { name: 'Email List' })).toHaveAttribute(
+    await expect(nav.getByRole('link', { name: 'Signup' })).toHaveAttribute(
         'href',
         '#signup',
     )
@@ -95,25 +103,6 @@ test('nav links point to expected sections', async ({ page }) => {
     await expect(page.locator('#about')).toBeAttached()
     await expect(page.locator('#donate')).toBeAttached()
     await expect(page.locator('#signup')).toBeAttached()
-})
-
-test('mobile nav toggle opens and closes the menu', async ({ page }) => {
-    await page.setViewportSize({ width: 480, height: 800 })
-    await page.goto('/')
-
-    const toggle = page.locator('#nav-toggle')
-    const mobileMenu = page.locator('#nav-mobile')
-
-    await expect(toggle).toHaveAttribute('aria-expanded', 'false')
-    await expect(mobileMenu).not.toHaveClass(/open/)
-
-    await toggle.click()
-    await expect(toggle).toHaveAttribute('aria-expanded', 'true')
-    await expect(mobileMenu).toHaveClass(/open/)
-
-    await toggle.click()
-    await expect(toggle).toHaveAttribute('aria-expanded', 'false')
-    await expect(mobileMenu).not.toHaveClass(/open/)
 })
 
 test('donate section links to Venmo and PayPal', async ({ page }) => {

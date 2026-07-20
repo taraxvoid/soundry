@@ -10,7 +10,15 @@ const googleCalendarUrl = `https://calendar.google.com/calendar/r?cid=${encodeUR
     target="_blank"
     rel="noopener noreferrer"
     class="btn-calendar"
+    aria-label="Subscribe to the Soundry events calendar in Google Calendar"
   >
-    <wa-icon name="calendar" aria-hidden="true"></wa-icon> Subscribe to Calendar
+    <wa-icon family="brands" name="google-plus-g" aria-hidden="true"></wa-icon> Google Cal
+  </a>
+  <a
+    href={webcalUrl}
+    class="btn-calendar"
+    aria-label="Add to Calendar (Apple Calendar and other calendar apps)"
+  >
+    <wa-icon name="apple-whole" aria-hidden="true"></wa-icon> Apple Cal
   </a>
 </div>
