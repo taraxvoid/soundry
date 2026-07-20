@@ -239,7 +239,7 @@ main:focus-visible {
 
 .events-section h2 {
     font-size: 1.75rem;
-    color: var(--dark);
+    color: var(--primary-dark);
     margin: 0;
 }
 
