@@ -302,11 +302,18 @@ wa-card:hover {
     font-size: 0.85rem;
     font-weight: 600;
     text-decoration: none;
-    border-bottom: none;
-    transition: background 0.15s;
+    box-shadow: 0 2px 0 var(--primary-lighter);
+    transition:
+        background 0.15s,
+        box-shadow 0.1s,
+        transform 0.1s;
 }
 .event-links a:hover {
     background: #e6d6b4;
+}
+.event-links a:active {
+    box-shadow: 0 0 0 var(--primary-lighter);
+    transform: translateY(2px);
 }
 
 /* === CALENDAR SUBSCRIBE === */
@@ -328,11 +335,18 @@ wa-card:hover {
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
-    border-bottom: none;
-    transition: background 0.15s;
+    box-shadow: 0 3px 0 var(--dark);
+    transition:
+        background 0.15s,
+        box-shadow 0.1s,
+        transform 0.1s;
 }
 .btn-calendar:hover {
     background: var(--primary-light);
+}
+.btn-calendar:active {
+    box-shadow: 0 0 0 var(--dark);
+    transform: translateY(3px);
 }
 
 /* === HERO / ABOUT === */
