@@ -50,6 +50,7 @@
         "@biomejs/biome": "^2.5.4",
         "@playwright/test": "^1.62.0",
         "@resvg/resvg-js": "^2.6.2",
+        "@socketsecurity/bun-security-scanner": "^1.1.2",
         "@types/bun": "^1.4.0",
         "favicons": "^7.3.0",
         "husky": "^9.1.7",
