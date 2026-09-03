@@ -18,6 +18,7 @@
         "@biomejs/biome": "^2.5.4",
         "@playwright/test": "^1.62.0",
         "@resvg/resvg-js": "^2.6.2",
+        "@socketsecurity/bun-security-scanner": "^1.1.2",
         "@types/bun": "^1.4.0",
         "favicons": "^7.3.0",
         "husky": "^9.1.7",
@@ -363,6 +364,8 @@
     "@shoelace-style/animations": ["@shoelace-style/animations@1.2.0", "", {}, "sha512-avvo1xxkLbv2dgtabdewBbqcJfV0e0zCwFqkPMnHFGbJbBHorRFfMAHh1NG9ymmXn0jW95ibUVH03E1NYXD6Gw=="],
 
     "@shoelace-style/localize": ["@shoelace-style/localize@3.2.3", "", {}, "sha512-pWoZywizMilenLfQcpE9bjaqi7WKiQXJB42cxvmSPwYS76U776wJ7B5QQ0P28yVit1vpHuFZzq1CtfVFv32jaQ=="],
+
+    "@socketsecurity/bun-security-scanner": ["@socketsecurity/bun-security-scanner@1.1.2", "", {}, "sha512-TdsAg6SMolubyZ6HfIjLWlANfHvhV6i7pdWof4OQ33zPEwXJm2ilA755levHMR618MKq22+06Ag8efiVKowxqA=="],
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
