@@ -3,3 +3,7 @@ git diff --cached --quiet && exit 0
 
 bun run format && git diff --cached --name-only --diff-filter=d | xargs -r git add
 bun run test:unit
+
+if git diff --cached --name-only | grep -qE '(^|/)(package\.json|bun\.lock)$'; then
+  bun run check:licenses
+fi
