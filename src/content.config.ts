@@ -6,7 +6,10 @@ import { TIME_ERROR, TIME_RE } from './utils/times'
 const events = defineCollection({
     loader: glob({ pattern: '**/*.yaml', base: './src/content/events' }),
     schema: z.object({
-        title: z.string().transform((v) => v.trim()),
+        title: z
+            .string()
+            .transform((v) => v.trim())
+            .refine((v) => v.length > 0, 'Title is required'),
         date: z.union([
             z.string(),
             z.date().transform((d) => d.toISOString().slice(0, 10)),
@@ -23,8 +26,14 @@ const events = defineCollection({
                 return v.trim()
             })
             .refine((v) => v === undefined || TIME_RE.test(v), TIME_ERROR),
-        location: z.string().transform((v) => v.trim()),
-        description: z.string().transform((v) => v.trim()),
+        location: z
+            .string()
+            .transform((v) => v.trim())
+            .refine((v) => v.length > 0, 'Location is required'),
+        description: z
+            .string()
+            .transform((v) => v.trim())
+            .refine((v) => v.length > 0, 'Description is required'),
         price: z.string().optional().default('0'),
         image: z.string().optional(),
         rsvpLink: z.string().optional(),
