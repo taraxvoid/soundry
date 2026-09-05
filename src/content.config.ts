@@ -6,7 +6,7 @@ import { TIME_ERROR, TIME_RE } from './utils/times'
 const events = defineCollection({
     loader: glob({ pattern: '**/*.yaml', base: './src/content/events' }),
     schema: z.object({
-        title: z.string().transform((v) => v.trim()),
+        title: z.string().transform((v) => v.trim()).min(1),
         date: z.union([
             z.string(),
             z.date().transform((d) => d.toISOString().slice(0, 10)),
