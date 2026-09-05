@@ -23,7 +23,7 @@ const events = defineCollection({
                 return v.trim()
             })
             .refine((v) => v === undefined || TIME_RE.test(v), TIME_ERROR),
-        location: z.string().transform((v) => v.trim()),
+        location: z.string().transform((v) => v.trim()).min(1),
         description: z.string().transform((v) => v.trim()),
         price: z.string().optional().default('0'),
         image: z.string().optional(),
