@@ -24,7 +24,7 @@ const events = defineCollection({
             })
             .refine((v) => v === undefined || TIME_RE.test(v), TIME_ERROR),
         location: z.string().transform((v) => v.trim()).min(1),
-        description: z.string().transform((v) => v.trim()),
+        description: z.string().transform((v) => v.trim()).min(1),
         price: z.string().optional().default('0'),
         image: z.string().optional(),
         rsvpLink: z.string().optional(),
