@@ -97,6 +97,10 @@ jobs:
 
       - name: Full e2e + a11y + lighthouse (live)
         if: github.event.pull_request.base.ref == 'live'
+<<<<<<< HEAD
+=======
+        run: |
+>>>>>>> b851141 (ci: remove link checker and simplify CI workflow)
           bun run test:e2e:all
           bun run test:a11y
           bun run test:e2e:lighthouse

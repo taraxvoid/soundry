@@ -28,10 +28,6 @@
         "test:build": "vitest run test/build.test.ts",
         "test:e2e": "bun run build && playwright test --project=mobile-chrome",
         "test:e2e:isolated": "playwright test --project=mobile-chrome",
-<<<<<<< HEAD
-=======
-        "test:e2e:only": "playwright test --project=mobile-chrome",
->>>>>>> f28f27f (ci: enhance CI pipeline and add quality checks)
         "test:e2e:smoke": "playwright test --project=mobile-chrome site.spec",
         "test:e2e:desktop": "bun run build && playwright test --project=desktop-chrome",
         "test:e2e:all": "bun run build && playwright test",
@@ -40,10 +36,6 @@
         "test:a11y": "bun run build && playwright test test/e2e/a11y.spec.ts --project=mobile-chrome",
         "test:e2e:lighthouse": "bun run build && bun scripts/run-lhci.ts",
         "check:licenses": "bun scripts/check-licenses.ts",
-<<<<<<< HEAD
-=======
-        "check:links": "bun scripts/check-links.ts",
->>>>>>> f28f27f (ci: enhance CI pipeline and add quality checks)
         "postinstall": "bunx @biomejs/biome migrate --write"
     },
     "engines": {
