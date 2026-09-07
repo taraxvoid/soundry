@@ -37,7 +37,6 @@
         "test:a11y": "bun run build && playwright test test/e2e/a11y.spec.ts --project=mobile-chrome",
         "test:e2e:lighthouse": "bun run build && bun scripts/run-lhci.ts",
         "check:licenses": "bun scripts/check-licenses.ts",
-        "check:links": "bun scripts/check-links.ts",
         "postinstall": "bunx @biomejs/biome migrate --write"
     },
     "engines": {

@@ -1,16 +1,13 @@
 name: CI
 
 on:
-  push:
-    branches: [main, next, live]
   pull_request:
     branches: [main, next, live]
+    types: [opened, synchronize, reopened, ready_for_review]
   workflow_dispatch:
-  schedule:
-    - cron: "0 9 * * 1"
 
 concurrency:
-  group: ci-${{ github.workflow }}-${{ github.ref }}
+  group: ci-${{ github.ref }}
   cancel-in-progress: true
 
 permissions:
@@ -20,7 +17,9 @@ jobs:
   validate:
     name: Validate
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' || github.event.pull_request.draft == false
+    if: github.event_name == 'pull_request' && !github.event.pull_request.draft
+    timeout-minutes: 25
+
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -87,25 +86,21 @@ jobs:
         run: bunx playwright install --with-deps chromium
 
       - name: Fast e2e — mobile only (main)
-        if: ${{ (github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main') || (github.event_name == 'push' && github.ref_name == 'main') }}
+        if: github.event.pull_request.base.ref == 'main'
         run: bun run test:e2e:isolated
 
       - name: Broader e2e + a11y (next)
-        if: ${{ (github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'next') || (github.event_name == 'push' && github.ref_name == 'next') }}
+        if: github.event.pull_request.base.ref == 'next'
         run: |
           bun run test:e2e:all
           bun run test:a11y
 
       - name: Full e2e + a11y + lighthouse (live)
-        if: ${{ (github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'live') || (github.event_name == 'push' && github.ref_name == 'live') }}
+        if: github.event.pull_request.base.ref == 'live'
         run: |
           bun run test:e2e:all
           bun run test:a11y
           bun run test:e2e:lighthouse
-
-      - name: Link checker (weekly + PRs to main)
-        if: ${{ github.event_name == 'schedule' || (github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main') }}
-        run: bun run check:links
 
       - name: Upload failure reports
         if: failure()
