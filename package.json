@@ -17,6 +17,8 @@
         "generate": "bun run generate:logo && bun run generate:favicons",
         "format": "biome check --write .",
         "lint": "biome check .",
+        "lint:actions": "bun run scripts/lint-actions.js",
+        "audit": "bun audit --audit-level high",
         "prepare": "husky",
         "test": "bun run build && npm-run-all -l -p check test:unit -s test:e2e:isolated",
         "test:unit": "vitest run",
@@ -31,8 +33,9 @@
         "test:e2e:ui": "bun run build && playwright test --ui",
         "test:e2e:headed": "bun run build && playwright test --headed",
         "test:a11y": "bun run build && playwright test test/e2e/a11y.spec.ts --project=mobile-chrome",
-        "postinstall": "bunx @biomejs/biome migrate --write",
-        "check:licenses": "license-checker --production --failOn 'GPL-1.0;GPL-1.0-only;GPL-1.0-or-later;GPL-2.0;GPL-2.0-only;GPL-2.0-or-later;GPL-3.0;GPL-3.0-only;GPL-3.0-or-later;AGPL-1.0;AGPL-1.0-only;AGPL-1.0-or-later;AGPL-3.0;AGPL-3.0-only;AGPL-3.0-or-later;SSPL-1.0;OSL-2.1;OSL-3.0;CPAL-1.0;EUPL-1.1;EUPL-1.2;CECILL-2.1'"
+        "test:e2e:lighthouse": "bun run build && bun scripts/run-lhci.ts",
+        "check:licenses": "bun scripts/check-licenses.ts",
+        "postinstall": "bunx @biomejs/biome migrate --write"
     },
     "engines": {
         "bun": ">=1.4.0"
@@ -49,14 +52,17 @@
         "@astrojs/check": "^0.9.10",
         "@axe-core/playwright": "^4.12.1",
         "@biomejs/biome": "^2.5.4",
+        "@lhci/cli": "^0.15.1",
         "@lizenz/checker": "^0.0.2",
         "@playwright/test": "^1.62.0",
         "@resvg/resvg-js": "^2.6.2",
         "@socketsecurity/bun-security-scanner": "^1.1.2",
         "@types/bun": "^1.4.0",
+        "@types/node": "^24.13.3",
+        "actionlint": "^2.0.6",
         "favicons": "^7.3.0",
         "husky": "^9.1.7",
-        "npm-run-all2": "^9.0.2",
+        "npm-run-all2": "^9.0.3",
         "vitest": "^4.1.10",
         "yaml": "^2.9.0"
     },
