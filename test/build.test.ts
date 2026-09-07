@@ -1,4 +1,3 @@
-import { spawnSync } from 'node:child_process'
 import { existsSync, readdirSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -10,25 +9,25 @@ const ROOT = join(__dirname, '..')
 // ---------------------------------------------------------------------------
 // Build smoke test
 // ---------------------------------------------------------------------------
+//
+// Asserts against dist/ rather than building it itself — matches
+// queeromaha's and synthomaha's test/build.test.ts. Every caller of
+// test:unit (test, test:push, voidflow's CI) already runs `bun run build`
+// first.
 
 describe('astro build', () => {
-    test('bun run build emits dist/', () => {
-        const result = spawnSync('bun', ['run', 'build'], {
-            cwd: ROOT,
-            encoding: 'utf8',
-            timeout: 120_000,
-        })
-
-        expect(result.status).toBe(0)
-
+    test('dist/ was produced by a prior `bun run build`', () => {
         const distDir = join(ROOT, 'dist')
-        expect(existsSync(distDir)).toBe(true)
+        expect(
+            existsSync(distDir),
+            'dist/ not found — run `bun run build` before this test',
+        ).toBe(true)
 
         const entries = readdirSync(distDir)
         expect(entries.length).toBeGreaterThan(0)
         expect(existsSync(join(distDir, 'index.html'))).toBe(true)
         expect(existsSync(join(distDir, 'events.ics'))).toBe(true)
-    }, 120_000)
+    })
 
     test('events.ics is a valid VCALENDAR with Soundry Events name', () => {
         const ics = readFileSync(join(ROOT, 'dist', 'events.ics'), 'utf8')
