@@ -17,7 +17,6 @@ jobs:
   validate:
     name: Validate
     runs-on: ubuntu-latest
-    if: github.event_name == 'pull_request' && !github.event.pull_request.draft
     timeout-minutes: 25
 
     steps:
@@ -52,10 +51,6 @@ jobs:
       - name: Lint workflow files
         run: bun run lint:actions
 
-      - name: Security audit of npm dependencies
-        run: bun run audit
-        continue-on-error: true
-
       - name: Lint
         run: bun run lint
 
@@ -77,26 +72,37 @@ jobs:
               - 'bun.lock'
             checker_script:
               - 'scripts/check-licenses.ts'
+            e2e_relevant:
+              - 'src/**'
+              - 'public/**'
+              - 'test/**'
+              - 'astro.config.ts'
+              - 'playwright.config.js'
+              - 'package.json'
+              - 'bun.lock'
+              - 'tsconfig.json'
+              - '.github/workflows/ci.yml'
 
       - name: Check dependency licenses (block GPL family)
         if: steps.changes.outputs.lockfile == 'true' || steps.changes.outputs.checker_script == 'true'
         run: bun run check:licenses
 
       - name: Install Playwright browsers
+        if: steps.changes.outputs.e2e_relevant == 'true'
         run: bunx playwright install --with-deps chromium
 
       - name: Fast e2e — mobile only (main)
-        if: github.event.pull_request.base.ref == 'main'
+        if: steps.changes.outputs.e2e_relevant == 'true' && github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'main'
         run: bun run test:e2e:isolated
 
       - name: Broader e2e + a11y (next)
-        if: github.event.pull_request.base.ref == 'next'
+        if: steps.changes.outputs.e2e_relevant == 'true' && github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'next'
         run: |
           bun run test:e2e:all
           bun run test:a11y
 
       - name: Full e2e + a11y + lighthouse (live)
-        if: github.event.pull_request.base.ref == 'live'
+        if: steps.changes.outputs.e2e_relevant == 'true' && github.event_name == 'pull_request' && github.event.pull_request.base.ref == 'live'
         run: |
           bun run test:e2e:all
           bun run test:a11y
