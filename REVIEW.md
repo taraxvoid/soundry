@@ -42,7 +42,7 @@ Domain: `https://soundryomaha.org`
 - [ ] `bun run test:data` passes for any new/changed event YAML
 - [ ] `bun run test:ical` passes if ICS generation changed
 - [ ] `bun run test:build` passes after build-affecting changes
-- [ ] `bun run test:e2e` and `bun run test:a11y` pass for frontend changes
+- [ ] `bun run test:e2e` and `bun run test:e2e:a11y` pass for frontend changes
 - [ ] `bun run lint` passes; `bun run format` auto-fixes formatting if needed
 
 ### Style / Conventions
