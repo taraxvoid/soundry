@@ -47,7 +47,7 @@
         "@awesome.me/webawesome": "^3.10.0",
         "@fontsource/atkinson-hyperlegible": "^5.3.0",
         "@fontsource/bevan": "^5.3.0",
-        "astro": "7.1.1",
+        "astro": "7.2.8",
         "typescript": "^6.0.3"
     },
     "devDependencies": {
