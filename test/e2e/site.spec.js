@@ -67,7 +67,7 @@ test('transitions are near-instant under prefers-reduced-motion', async ({
     await page.goto('/')
 
     const duration = await page
-        .locator('.signup-button')
+        .locator('#signup-submit')
         .evaluate((el) => getComputedStyle(el).transitionDuration)
     expect(
         duration.split(',').every((d) => Number.parseFloat(d) <= 0.001),
