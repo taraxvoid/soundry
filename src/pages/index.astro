@@ -1,5 +1,6 @@
 ---
 import EventCalendar from '../components/EventCalendar.astro'
+import ImpactStories from '../components/ImpactStories.astro'
 import Base from '../layouts/Base.astro'
 ---
 
@@ -8,6 +9,11 @@ import Base from '../layouts/Base.astro'
   <form name="email-signup" data-netlify="true" hidden>
     <input type="email" name="email" />
     <input type="text" name="name" />
+  </form>
+  <form name="impact-stories" data-netlify="true" hidden>
+    <input type="text" name="name" />
+    <input type="email" name="email" />
+    <textarea name="story"></textarea>
   </form>
 
   <!-- About / Hero -->
@@ -19,6 +25,9 @@ import Base from '../layouts/Base.astro'
 
   <!-- Events Calendar -->
   <EventCalendar />
+
+  <!-- Community Impact -->
+  <ImpactStories />
 
   <!-- Email Signup -->
   <section class="section signup-section" id="signup">

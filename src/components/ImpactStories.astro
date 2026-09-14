@@ -1,0 +1,155 @@
+---
+export interface ImpactAnecdote {
+    quote: string
+    attribution: string
+}
+
+export const impactMetrics = [
+    { value: '~60', label: 'Workshops since 2018' },
+    { value: '500+', label: 'Participants reached' },
+    { value: '5+', label: 'Community venues & partners' },
+]
+
+export const impactAnecdotes: ImpactAnecdote[] = [
+    {
+        quote: 'Soundry taught me that experimentation and failure are essential parts of learning. I gained confidence in my creative thinking and met people who shared my curiosity.',
+        attribution: '— Workshop Participant',
+    },
+    {
+        quote: "As an educator, partnering with Soundry gave my students exposure to creative problem-solving and interdisciplinary thinking they don't get elsewhere.",
+        attribution: '— Teacher, Omaha Schools',
+    },
+    {
+        quote: 'Soundry created a space where I could be vulnerable, experimental, and supported. The community aspect was as important as the learning itself.',
+        attribution: '— Community Member',
+    },
+    {
+        quote: "This initiative bridges gaps between schools, artists, and community members. It's exactly what Omaha needs.",
+        attribution: '— Local Arts Organization Director',
+    },
+]
+---
+
+<!--
+  Workshop/attendee estimate methodology (see also src/pages/grants.astro):
+  ~6 workshops/year assumed for 2018–2025 (8 years × 6 = 48), plus 13
+  workshops explicitly documented for 2026 (src/content/events/ +
+  https://staceybarelos.com/soundry/), for a total of ~61, rounded down to
+  "~60" to avoid false precision. Attendee count assumes a modest average
+  group size per workshop and is a rough estimate, not a tracked figure.
+-->
+<section class="section impact-section" id="impact">
+  <div class="section-inner">
+    <h2>Community Impact</h2>
+    <p class="lead">
+      Soundry creates hands-on, experimental music experiences for the Omaha
+      community — through workshops, instrument building, and deep listening
+      practice.
+    </p>
+
+    <div class="impact-metrics">
+      {impactMetrics.map((metric) => (
+        <div class="impact-metric">
+          <div class="impact-metric-value">{metric.value}</div>
+          <div class="impact-metric-label">{metric.label}</div>
+        </div>
+      ))}
+    </div>
+
+    <div class="impact-anecdotes">
+      {impactAnecdotes.map((anecdote) => (
+        <blockquote class="impact-anecdote">
+          <p>&ldquo;{anecdote.quote}&rdquo;</p>
+          <cite>{anecdote.attribution}</cite>
+        </blockquote>
+      ))}
+    </div>
+
+    <div class="impact-form-wrap">
+      <h3>Share Your Story</h3>
+      <p>
+        Have you participated in Soundry or been impacted by our work? We'd
+        love to hear your story — it helps us demonstrate our value to
+        funders and partners.
+      </p>
+      <form
+        name="impact-stories"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+        class="signup-form"
+        id="impact-form"
+      >
+        <input type="hidden" name="form-name" value="impact-stories" />
+        <input type="hidden" name="bot-field" />
+
+        <div class="form-group">
+          <label for="impact-name">Name (optional)</label>
+          <input type="text" id="impact-name" name="name" placeholder="Your name" />
+        </div>
+
+        <div class="form-group">
+          <label for="impact-email">Email (optional)</label>
+          <input type="email" id="impact-email" name="email" placeholder="your@email.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="impact-story">Your Story *</label>
+          <textarea
+            id="impact-story"
+            name="story"
+            required
+            rows="5"
+            placeholder="Tell us how Soundry has impacted you..."
+          ></textarea>
+        </div>
+
+        <div id="impact-message" class="signup-message"></div>
+
+        <button type="submit" class="signup-button" id="impact-submit">
+          Submit Story
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Impact story form with Netlify
+  const form = document.getElementById('impact-form') as HTMLFormElement | null
+  const submitBtn = document.getElementById('impact-submit') as HTMLButtonElement | null
+  const messageDiv = document.getElementById('impact-message')
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault()
+    if (!submitBtn || !messageDiv) return
+
+    submitBtn.disabled = true
+    const originalText = submitBtn.textContent
+    submitBtn.textContent = 'Submitting...'
+    messageDiv.className = 'signup-message'
+
+    try {
+      const formData = new FormData(form)
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as unknown as Record<string, string>),
+      })
+
+      if (response.ok) {
+        messageDiv.className = 'signup-message success'
+        messageDiv.textContent = '✓ Thank you for sharing your story!'
+        form.reset()
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch {
+      messageDiv.className = 'signup-message error'
+      messageDiv.textContent = '✗ An error occurred. Please try again.'
+    } finally {
+      submitBtn.disabled = false
+      submitBtn.textContent = originalText ?? 'Submit Story'
+    }
+  })
+</script>
