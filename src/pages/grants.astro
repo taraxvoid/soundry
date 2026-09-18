@@ -1,135 +1,70 @@
 ---
-import { impactAnecdotes } from '../components/ImpactStories.astro'
 import Base from '../layouts/Base.astro'
 ---
 
-<!--
-  Workshop/attendee estimate methodology:
-  Stacey Barelos has led Soundry workshops since 2018. Her site
-  (https://staceybarelos.com/soundry/) explicitly lists 13 workshops for
-  2026 alone (5 spring sessions + 6 summer fundraising classes + 2 events
-  also tracked in src/content/events/). For years without a public listing
-  (2018–2025, 8 years), we fall back to a conservative baseline of ~6
-  workshops/year, confirmed by Soundry's organizers. That's 8 × 6 = 48,
-  plus the 13 documented in 2026, for a total of ~61 — rounded down to
-  "~60" in the copy below to avoid false precision. Attendee counts are not
-  formally tracked; the ~500 figure assumes a modest average group size per
-  workshop and should be read as a rough, defensible estimate rather than a
-  measured figure.
--->
 <Base
-  title="Grants & Funding Impact — Soundry"
-  description="Soundry impact summary for funders: workshop history, participant reach, and program credentials."
+  title="For Funders — Soundry"
+  description="Soundry program overview and leadership for grant reviewers and prospective partners."
 >
   <section class="section hero-section" id="grants-hero">
     <div class="section-inner">
-      <h1>Grants &amp; Funding Impact</h1>
+      <h1>For Funders</h1>
       <p>
-        A summary of Soundry's program history, reach, and credentials for
-        funders, foundations, and grant reviewers considering support for
-        Omaha's experimental music education program.
+        Program overview and leadership for grant reviewers and prospective
+        partners.
       </p>
     </div>
   </section>
 
-  <section class="section grants-section" id="grants-overview">
+  <section class="section grants-section" id="program">
     <div class="section-inner">
-      <h2>Program Overview</h2>
+      <h2>Program</h2>
       <p>
-        Soundry is an experimental music education program based in Omaha,
-        Nebraska, offering hands-on workshops in instrument building, deep
-        listening, improvisation, and DIY music technology. Since 2018,
-        Soundry has run recurring public workshops — most recently at the
-        Church/Art House in South Omaha — that are free or low-cost and open
-        to participants of all ages and musical backgrounds.
-      </p>
-
-      <div class="impact-metrics grants-metrics">
-        <div class="impact-metric">
-          <div class="impact-metric-value">~60</div>
-          <div class="impact-metric-label">Workshops run since 2018</div>
-        </div>
-        <div class="impact-metric">
-          <div class="impact-metric-value">500+</div>
-          <div class="impact-metric-label">Participants reached (est.)</div>
-        </div>
-        <div class="impact-metric">
-          <div class="impact-metric-value">8</div>
-          <div class="impact-metric-label">Years of continuous programming</div>
-        </div>
-      </div>
-
-      <p class="grants-note">
-        <strong>Methodology:</strong> Soundry has run an estimated ~6
-        workshops per year since 2018. For 2026 alone, 13 individual
-        workshops are documented (see <a href="https://staceybarelos.com/soundry/" target="_blank" rel="noopener noreferrer">staceybarelos.com/soundry</a>
-        and Soundry's <a href="/events">events listing</a>), suggesting the
-        true historical total is at or above this baseline. Attendee counts
-        are not formally tracked session-by-session; the estimate above
-        reflects a conservative average group size across all sessions
-        rather than a measured figure.
+        Soundry is a 501(c)(3) experimental music education program in
+        Omaha, Nebraska. Since 2018 it has run public workshops, open to all
+        ages, in soundscaping, instrument building, deep listening, and DIY
+        music technology. Workshops are currently hosted at the Church/Art
+        House in South Omaha; see the <a href="/events">events listing</a> for
+        the current schedule.
       </p>
     </div>
   </section>
 
-  <section class="section grants-bio-section" id="grants-bio">
+  <section class="section grants-section grants-section--alt" id="leadership">
     <div class="section-inner">
-      <h2>Program Leadership</h2>
-      <div class="grants-bio-card">
-        <h3>Dr. Stacey Barelos</h3>
-        <p class="grants-bio-credential">
-          Music Professor, University of Nebraska Omaha (UNO)
-        </p>
-        <p>
-          Soundry was founded and is led by Dr. Stacey Barelos, a sound
-          artist, composer, performer, and educator whose work has reached
-          audiences across five continents. In addition to leading Soundry,
-          Dr. Barelos is a music professor at the University of Nebraska
-          Omaha, bringing university-level pedagogical expertise and
-          institutional credibility to Soundry's community workshops.
-        </p>
-        <p>
-          She is a certified Deep Listening facilitator (since 2021) and has
-          led workshops and residencies locally, regionally, and
-          internationally, including at the Ex Nihilo Festival in Guanajuato,
-          Mexico, and the University of Nebraska–Kearney New Music Festival.
-          Her work has been supported by a Bemis Community Arts Grant (2023)
-          and a Fortuna Grant (2024), and was featured on Nebraska Public
-          Media's <em>What If</em>.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section class="section impact-section" id="grants-stories">
-    <div class="section-inner">
-      <h2>Stories of Impact</h2>
-      <p class="lead">
-        Testimonials from Soundry participants, educators, and community
-        partners, collected through our ongoing impact-story submission form.
-      </p>
-      <div class="impact-anecdotes">
-        {impactAnecdotes.map((anecdote) => (
-          <blockquote class="impact-anecdote">
-            <p>&ldquo;{anecdote.quote}&rdquo;</p>
-            <cite>{anecdote.attribution}</cite>
-          </blockquote>
-        ))}
-      </div>
+      <h2>Leadership</h2>
+      <h3>Dr. Stacey Barelos, founder</h3>
       <p>
-        <a href="/#impact" class="btn-hero-secondary">Read more &amp; share a story →</a>
+        Stacey Barelos is a sound artist, composer, performer, and educator.
+        She holds a DMA from the University of Wisconsin–Madison and teaches
+        music theory at the University of Nebraska at Omaha. A certified
+        Deep Listening facilitator since 2021, she leads workshops and
+        residencies across the U.S. and internationally, most recently at
+        the Ex Nihilo Festival in Guanajuato, Mexico, and the University of
+        Nebraska–Kearney New Music Festival.
+      </p>
+      <p>
+        Her work has been supported by a 2023 Bemis Community Arts Grant and
+        a 2024 Fortuna Grant, and was featured on Nebraska Public
+        Media's <em>What If</em>. Full bio at <a
+          href="https://staceybarelos.com/about/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >staceybarelos.com</a>.
       </p>
     </div>
   </section>
 
-  <section class="section donate-section" id="grants-contact">
+  <section class="section grants-section" id="contact">
     <div class="section-inner">
-      <h2>Get in Touch</h2>
+      <h2>Contact</h2>
       <p>
-        For grant inquiries, partnership proposals, or additional program
-        documentation, reach out via
-        <a href="https://www.instagram.com/omahasoundry/" target="_blank" rel="noopener noreferrer">Instagram</a>
-        or our <a href="/#signup">email list</a>.
+        For grant inquiries or program documentation, message <a
+          href="https://www.instagram.com/omahasoundry/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >@omahasoundry</a> on Instagram. Participants
+        can <a href="/#story">share their own story</a> on the home page.
       </p>
     </div>
   </section>
@@ -139,60 +74,25 @@ import Base from '../layouts/Base.astro'
   .grants-section {
     background: var(--white);
   }
+  .grants-section--alt {
+    background: var(--cream);
+  }
   .grants-section h2 {
     font-size: 1.75rem;
     color: var(--primary-dark);
     margin: 0 0 1rem;
   }
+  .grants-section h3 {
+    font-size: 1.2rem;
+    color: var(--dark);
+    margin: 0 0 0.75rem;
+  }
   .grants-section p {
     line-height: 1.6;
     max-width: 720px;
-  }
-  .grants-metrics {
-    margin-top: 2rem;
-  }
-  .grants-note {
-    margin-top: 1.5rem;
-    padding: 1rem 1.25rem;
-    background: var(--cream);
-    border-left: 4px solid var(--primary-dark);
-    border-radius: 0.25rem;
-    font-size: 0.95rem;
-  }
-  .grants-note a {
-    color: var(--primary-dark);
-  }
-
-  .grants-bio-section {
-    background: linear-gradient(135deg, var(--cream) 0%, var(--light-cream) 100%);
-  }
-  .grants-bio-section h2 {
-    font-size: 1.75rem;
-    color: var(--primary-dark);
-    margin: 0 0 1.5rem;
-  }
-  .grants-bio-card {
-    background: var(--white);
-    border: 2px solid var(--primary-dark);
-    border-radius: 0.5rem;
-    padding: 1.75rem;
-    max-width: 720px;
-  }
-  .grants-bio-card h3 {
-    margin: 0 0 0.25rem;
-    font-size: 1.3rem;
-    color: var(--dark);
-  }
-  .grants-bio-credential {
-    font-weight: 700;
-    color: var(--primary-dark);
     margin: 0 0 1rem;
   }
-  .grants-bio-card p {
-    line-height: 1.6;
-    margin: 0 0 1rem;
-  }
-  .grants-bio-card p:last-child {
+  .grants-section p:last-child {
     margin-bottom: 0;
   }
 </style>

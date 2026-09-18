@@ -506,116 +506,23 @@ wa-card:hover {
     font-size: 1.75rem;
 }
 
-/* === IMPACT === */
-.impact-section {
+/* === SHARE YOUR STORY === */
+.story-section {
     background: var(--cream);
 }
 
-.impact-section h2 {
-    font-size: 1.75rem;
-    color: var(--primary-dark);
-    margin: 0 0 0.5rem;
-}
-
-.impact-section .lead {
-    color: var(--dark);
-    margin: 0 0 2rem;
-    max-width: 640px;
-    line-height: 1.6;
-    opacity: 0.9;
-}
-
-.impact-metrics {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-}
-
-.impact-metric {
-    text-align: center;
-    padding: 1.5rem 1rem;
-    background: var(--primary-dark);
-    color: var(--white);
-    border-radius: 0.5rem;
-}
-
-.impact-metric-value {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    line-height: 1.1;
-    margin-bottom: 0.35rem;
-}
-
-.impact-metric-label {
-    font-size: 0.9rem;
-    opacity: 0.9;
-}
-
-.impact-anecdotes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
-}
-
-.impact-anecdote {
-    margin: 0;
-    padding: 1.5rem;
-    background: var(--white);
-    border-left: 4px solid var(--primary-dark);
-    border-radius: 0.25rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-.impact-anecdote p {
-    margin: 0 0 0.75rem;
-    font-style: italic;
-    color: var(--dark);
-    line-height: 1.5;
-}
-
-.impact-anecdote cite {
-    font-style: normal;
-    font-weight: 700;
-    color: var(--primary-dark);
-}
-
-.impact-form-wrap {
-    max-width: 560px;
-}
-
-.impact-form-wrap h3 {
-    font-size: 1.3rem;
+.story-section h2 {
+    font-size: 1.5rem;
     color: var(--dark);
     margin: 0 0 0.5rem;
 }
 
-.impact-form-wrap p {
+.story-section .lead {
     color: var(--dark);
-    opacity: 0.9;
-    line-height: 1.6;
     margin: 0 0 1.5rem;
-}
-
-.impact-form-wrap textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 2px solid var(--primary-dark);
-    border-radius: 6px;
-    background: var(--white);
-    font-family: inherit;
-    font-size: 1rem;
-    box-sizing: border-box;
-    resize: vertical;
-    transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
-}
-.impact-form-wrap textarea:focus {
-    outline: none;
-    border-color: var(--primary-light);
-    box-shadow: 0 0 0 3px rgba(110, 50, 38, 0.1);
+    max-width: 480px;
+    line-height: 1.6;
+    opacity: 0.9;
 }
 
 /* === EMAIL SIGNUP === */
@@ -649,7 +556,8 @@ wa-card:hover {
     margin-bottom: 0.4rem;
     color: var(--dark);
 }
-.form-group input {
+.form-group input,
+.form-group textarea {
     width: 100%;
     padding: 0.75rem;
     border: 2px solid var(--primary-dark);
@@ -662,7 +570,11 @@ wa-card:hover {
         border-color 0.2s,
         box-shadow 0.2s;
 }
-.form-group input:focus {
+.form-group textarea {
+    resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus {
     outline: none;
     border-color: var(--primary-light);
     box-shadow: 0 0 0 3px rgba(110, 50, 38, 0.1);

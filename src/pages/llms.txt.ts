@@ -6,6 +6,7 @@ export async function GET() {
 ## Pages
 
 - [Soundry](https://soundryomaha.org/): Events calendar, email signup, donation, and booking information for Soundry's experimental music workshops in Omaha.
+- [For Funders](https://soundryomaha.org/grants): Program overview and leadership for grant reviewers and prospective partners.
 
 This file is advertised via an HTTP \`Link: </llms.txt>; rel="service-doc"\` response header.
 `

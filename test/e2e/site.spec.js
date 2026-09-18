@@ -80,15 +80,15 @@ test('nav links point to expected sections', async ({ page }) => {
     const nav = page.locator('.nav-links')
     await expect(nav.getByRole('link', { name: 'Events' })).toHaveAttribute(
         'href',
-        '#events',
+        '/#events',
     )
     await expect(nav.getByRole('link', { name: 'Donate' })).toHaveAttribute(
         'href',
-        '#donate',
+        '/#donate',
     )
     await expect(nav.getByRole('link', { name: 'Signup' })).toHaveAttribute(
         'href',
-        '#signup',
+        '/#signup',
     )
 
     const instagram = nav.getByRole('link', { name: 'Instagram' })
@@ -188,6 +188,31 @@ test('shows all events when every event is in the future', async ({ page }) => {
         'hidden',
         '',
     )
+})
+
+test('/grants renders and links back to the story form', async ({ page }) => {
+    await page.goto('/')
+    await page
+        .locator('footer')
+        .getByRole('link', { name: 'For funders' })
+        .click()
+    await expect(page).toHaveURL(/\/grants\/?$/)
+    await expect(
+        page.getByRole('heading', { level: 1, name: 'For Funders' }),
+    ).toBeVisible()
+    await expect(
+        page.getByRole('link', { name: /share their own story/ }),
+    ).toHaveAttribute('href', '/#story')
+})
+
+test('story form requires a story', async ({ page }) => {
+    await page.goto('/')
+    const form = page.locator('#story-form')
+    const story = form.locator('#story-text')
+    await expect(story).toHaveAttribute('required', '')
+
+    await form.getByRole('button', { name: 'Submit Story' }).click()
+    await expect(story).toBeFocused()
 })
 
 test('email signup form requires an email address', async ({ page }) => {
