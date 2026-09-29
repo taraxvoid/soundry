@@ -105,7 +105,7 @@ test('nav links point to expected sections', async ({ page }) => {
     await expect(page.locator('#signup')).toBeAttached()
 })
 
-test('donate section links to Venmo and PayPal', async ({ page }) => {
+test('donate section links to Venmo', async ({ page }) => {
     await page.goto('/')
     const donate = page.locator('#donate')
 
@@ -115,13 +115,6 @@ test('donate section links to Venmo and PayPal', async ({ page }) => {
         'https://venmo.com/u/omahasoundry',
     )
     await expect(venmo).toHaveAttribute('target', '_blank')
-
-    const paypal = donate.getByRole('link', { name: /paypal/i })
-    await expect(paypal).toHaveAttribute(
-        'href',
-        'https://www.paypal.com/US/fundraiser/charity/5506255',
-    )
-    await expect(paypal).toHaveAttribute('target', '_blank')
 })
 
 test('events calendar lists upcoming events with calendar links', async ({
