@@ -33,12 +33,14 @@ Events live in `src/content/events/`. Musicians/performers are referenced from e
 
 - `src/layouts/Base.astro` — main layout (HTML shell, nav, footer)
 - `src/components/EventCalendar.astro` — upcoming events display
-- `src/components/EventSubscribe.astro` — email list signup form
+- `src/components/EventSubscribe.astro` — calendar subscribe links (Google Calendar, webcal)
 - `src/components/Logo.astro` — site logo
 
 ### Forms
 
 Email signup uses Netlify Forms (`data-netlify="true"`). Hidden static form in `index.astro` for build-time detection.
+
+`netlify/functions/submission-created.ts` runs after each verified form submission and adds `email-signup` addresses to Buttondown (`BUTTONDOWN_API_KEY` in Netlify env). Double opt-in and the welcome email are configured in Buttondown. Sending domain is `omahasoundry.org`.
 
 ### Tests
 
