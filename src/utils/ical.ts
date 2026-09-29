@@ -42,7 +42,7 @@ function buildVEvent(data: EventData, slug: string): string {
         `DTSTAMP:${stamp()}`,
         `DTSTART;TZID=America/Chicago:${dateStr}T${startTime}`,
         `DTEND;TZID=America/Chicago:${dateStr}T${endTime}`,
-        `SUMMARY:${data.title}`,
+        `SUMMARY:Soundry - ${data.title}`,
         `DESCRIPTION:${desc}`,
         `LOCATION:${data.location}`,
         'URL:https://soundryomaha.org/',

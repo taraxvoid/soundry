@@ -27,7 +27,7 @@ describe('generateFeedICS', () => {
     test('includes upcoming events as VEVENTs', () => {
         const ics = generateFeedICS([{ data: baseEvent, id: 'test-show' }])
         expect(ics).toContain('UID:test-show@soundryomaha.org')
-        expect(ics).toContain('SUMMARY:Test Show')
+        expect(ics).toContain('SUMMARY:Soundry - Test Show')
         expect(ics).toContain('DTSTART;TZID=America/Chicago:20260612T200000')
         expect(ics).toContain('LOCATION:Church Arthouse (Omaha)')
     })
