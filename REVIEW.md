@@ -8,7 +8,8 @@ Domain: `https://soundryomaha.org`
 - `src/layouts/Base.astro` — HTML shell, sticky nav, footer, skip link, back-to-top
 - `src/pages/index.astro` — home: hero, event calendar, email signup, donate, Instagram
 - `src/components/EventCalendar.astro` — upcoming events from content collection
-- `src/components/EventSubscribe.astro` — Netlify email form with JS submit handler
+- `src/components/EventSubscribe.astro` — calendar subscribe links (Google Calendar, webcal)
+- `netlify/functions/submission-created.ts` — forwards `email-signup` submissions to Buttondown
 - `src/content/events/*.yaml` — event data validated by `src/content.config.ts`
 - `src/utils/ical.ts` — `.ics` generation for feed and per-event routes
 - `src/utils/eventVisibility.ts` — hides past events on the home page calendar
