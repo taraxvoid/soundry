@@ -18,6 +18,7 @@
         "generate": "bun run generate:logo && bun run generate:favicons",
         "format": "biome check --write .",
         "lint": "biome check .",
+        "lint:migrate": "biome migrate --write",
         "lint:actions": "github-actionlint",
         "audit": "bun audit --audit-level high --production",
         "prepare": "husky",
@@ -37,8 +38,7 @@
         "test:e2e:headed": "bun run build && playwright test --headed",
         "test:e2e:a11y": "bun run build && playwright test test/e2e/a11y.spec.ts --project=mobile-chrome",
         "test:e2e:lighthouse": "bun run build && bunx --package @taraxvoid/voidflow@0.9.0 unlighthouse-runner --dir dist",
-        "check:licenses": "bun scripts/check-licenses.ts",
-        "postinstall": "bunx @biomejs/biome migrate --write"
+        "check:licenses": "bun scripts/check-licenses.ts"
     },
     "engines": {
         "bun": ">=1.4.0"
