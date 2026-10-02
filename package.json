@@ -38,7 +38,7 @@
         "test:e2e:ui": "bun run build && playwright test --ui",
         "test:e2e:headed": "bun run build && playwright test --headed",
         "test:e2e:a11y": "bun run build && playwright test test/e2e/a11y.spec.ts --project=mobile-chrome",
-        "test:e2e:lighthouse": "bun run build && bunx --package github:taraxvoid/voidflow#worktree-chrome-no-sandbox unlighthouse-runner --dir dist",
+        "test:e2e:lighthouse": "bun run build && bunx --package @taraxvoid/voidflow@0.10.0 unlighthouse-runner --dir dist",
         "check:licenses": "bunx --package @taraxvoid/voidflow@0.10.0 check-licenses"
     },
     "engines": {
