@@ -8,7 +8,7 @@ Experimental music education by [Stacey Barelos](https://staceybarelos.com/sound
 
 - \*nix
 - [Bun](https://bun.sh/) as drop-in Node interpreter replacement, package manager and test runner
-- (optional) [volta](https://volta.sh/) for node ver wrangling
+- (optional) [mise](https://mise.jdx.dev/) for node ver wrangling (see `mise.toml`)
 - (optional) [Netlify CLI](https://docs.netlify.com/cli/get-started/) for managing live deployments
 
 ## Stack
