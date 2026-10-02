@@ -20,12 +20,11 @@
         "@playwright/test": "^1.63.0",
         "@resvg/resvg-js": "^2.6.2",
         "@socketsecurity/bun-security-scanner": "^1.1.3",
-        "@taraxvoid/voidflow": "0.9.0",
+        "@taraxvoid/voidflow": "0.10.0",
         "@types/bun": "^1.4.2",
         "@types/node": "^24.13.6",
         "favicons": "^7.3.1",
         "github-actionlint": "^1.7.12",
-        "husky": "^9.1.7",
         "npm-run-all2": "^9.0.3",
         "vitest": "^4.1.11",
         "yaml": "^2.9.1",
@@ -426,7 +425,7 @@
 
     "@standard-schema/spec": ["@standard-schema/spec@1.1.0", "", {}, "sha512-l2aFy5jALhniG5HgqrD6jXLi/rUWrKvqN/qJx6yoJsgKhblVd+iqqU4RCXavm/jPityDo5TCvKMnpjKnOriy0w=="],
 
-    "@taraxvoid/voidflow": ["@taraxvoid/voidflow@0.9.0", "", { "peerDependencies": { "@playwright/test": ">=1.40" }, "bin": { "unlighthouse-runner": "scripts/unlighthouse/run.ts" } }, "sha512-25kuSC0dH+vgUsubHJfFuBAsj5//RAMTBLkrgo0QFQlieKDwkGiJyxq6aR/Y/x0VmesrTH1Mrcs/2xWvTQVrGw=="],
+    "@taraxvoid/voidflow": ["@taraxvoid/voidflow@0.10.0", "", { "peerDependencies": { "@playwright/test": ">=1.40" }, "bin": { "check-licenses": "scripts/check-licenses.ts", "unlighthouse-runner": "scripts/unlighthouse/run.ts" } }, "sha512-3yfWzwrk/HKtRj7t9HblUPZggDqNTrU92rC5JJWTYektkYZbb/tSRqSsP/QVXhZj0VKBUY7lzgGbh2tjUigfVA=="],
 
     "@tufjs/canonical-json": ["@tufjs/canonical-json@2.0.0", "", {}, "sha512-yVtV8zsdo8qFHe+/3kw81dSLyF7D576A5cCFCi4X7B39tWT7SekaEFUnvnWJHz+9qO7qJTah1JbrDjWKqFtdWA=="],
 
@@ -713,8 +712,6 @@
     "http-proxy-agent": ["http-proxy-agent@7.0.2", "", { "dependencies": { "agent-base": "^7.1.0", "debug": "^4.3.4" } }, "sha512-T1gkAiYYDWYx3V5Bmyu7HcfcvL7mUrTWiM6yOfa3PIphViJ/gFPbvidQ+veqSOHci/PxBcDabeUNCzpOODJZig=="],
 
     "https-proxy-agent": ["https-proxy-agent@7.0.6", "", { "dependencies": { "agent-base": "^7.1.2", "debug": "4" } }, "sha512-vK9P5/iUfdl95AI+JVyUuIcVtd4ofvtrOr3HNtM2yxC9bnMbEdp3x01OhQNnjb8IJYi38VlTE3mBXwcfvywuSw=="],
-
-    "husky": ["husky@9.1.7", "", { "bin": { "husky": "bin.js" } }, "sha512-5gs5ytaNjBrh5Ow3zrvdUUY+0VxIuWVL4i9irt6friV+BqdCfmV11CQTWMiBYWHbXhco+J1kHfTOUkePhCDvMA=="],
 
     "iconv-lite": ["iconv-lite@0.7.3", "", { "dependencies": { "safer-buffer": ">= 2.1.2 < 3.0.0" } }, "sha512-IKXpvIzjnC9XTAUbVBcMfGS0EPaIXtW6v+zr+RRp+hqULEpo0owZax6wyRwPOJbWbzjYspQwusTsfVr0ifh4uQ=="],
 
