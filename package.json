@@ -19,7 +19,6 @@
         "format": "biome check --write .",
         "lint": "biome check .",
         "lint:migrate": "biome migrate --write",
-        "lint:migrate:check": "biome migrate | { ! grep -q \"needs migration\"; }",
         "lint:actions": "github-actionlint",
         "audit": "bun audit --audit-level high --production",
         "prepare": "husky",
