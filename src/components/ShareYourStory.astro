@@ -1,0 +1,61 @@
+---
+// Submissions land in the Netlify form named "impact-stories" — the same
+// name the previous site used, so old and new submissions stay together.
+---
+
+<section class="section story-section" id="story">
+  <div class="section-inner">
+    <h2>Share Your Story</h2>
+    <p class="lead">
+      Been to a Soundry workshop? Tell us about it. Your words help us make
+      the case to funders and partners.
+    </p>
+    <form
+      name="impact-stories"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      class="signup-form"
+      id="story-form"
+    >
+      <input type="hidden" name="form-name" value="impact-stories" />
+      <input type="hidden" name="bot-field" />
+
+      <div class="form-group">
+        <label for="story-text">Your story *</label>
+        <textarea id="story-text" name="story" required rows="5"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="story-name">Name (optional)</label>
+        <input type="text" id="story-name" name="name" />
+      </div>
+
+      <div class="form-group">
+        <label for="story-email">E-mail (optional)</label>
+        <input
+          type="email"
+          id="story-email"
+          name="email"
+          placeholder="your@email.com"
+        />
+      </div>
+
+      <div class="signup-message"></div>
+
+      <button type="submit" class="signup-button">Submit Story</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  import { bindNetlifyForm } from '../utils/netlifyForm'
+
+  const form = document.querySelector<HTMLFormElement>('#story-form')
+  if (form) {
+    bindNetlifyForm(form, {
+      pending: 'Submitting...',
+      success: '✓ Thanks for sharing your story!',
+    })
+  }
+</script>

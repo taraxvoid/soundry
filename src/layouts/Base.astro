@@ -18,10 +18,11 @@ const {
 
 const year = new Date().getFullYear()
 
+// Root-relative so the anchors also work from /grants and /404.
 const navLinks = [
-    { href: '#events', label: 'Events' },
-    { href: '#signup', label: 'Signup' },
-    { href: '#donate', label: 'Donate' },
+    { href: '/#events', label: 'Events' },
+    { href: '/#signup', label: 'Signup' },
+    { href: '/#donate', label: 'Donate' },
 ]
 ---
 
@@ -74,7 +75,7 @@ const navLinks = [
     </main>
 
     <footer>
-      <p>© {year} Soundry. All rights reserved.</p>
+      <p>© {year} Soundry. All rights reserved. <a href="/grants">For funders</a></p>
       <p>
         built with <wa-icon
           name="heart"
