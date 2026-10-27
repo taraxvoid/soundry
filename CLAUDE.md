@@ -40,9 +40,9 @@ Static site built with **Astro**, deployed to Netlify. Single layout at `src/lay
 
 ### Pages
 
-- `/` — home page: about/hero, events calendar, email signup, donation, booking
-- `/events` — events listing (static generation from content collection)
-- `/events.ics` — iCal feed for calendar subscriptions
+- `/` - home page: about/hero, events calendar, email signup, donation, booking
+- `/events` - events listing (static generation from content collection)
+- `/events.ics` - iCal feed for calendar subscriptions
 - `/llms.txt`, `/robots.txt`, `/404`
 
 ### Content model
@@ -51,10 +51,10 @@ Events live as YAML in `src/content/events/`; the Zod schema is in `src/content.
 
 ### Components
 
-- `src/layouts/Base.astro` — main layout (HTML shell, nav, footer)
-- `src/components/EventCalendar.astro` — upcoming events display
-- `src/components/EventSubscribe.astro` — calendar subscribe links (Google Calendar, webcal)
-- `src/components/Logo.astro` — site logo
+- `src/layouts/Base.astro` - main layout (HTML shell, nav, footer)
+- `src/components/EventCalendar.astro` - upcoming events display
+- `src/components/EventSubscribe.astro` - calendar subscribe links (Google Calendar, webcal)
+- `src/components/Logo.astro` - site logo
 
 ### Forms
 
@@ -64,5 +64,5 @@ Email signup uses Netlify Forms (`data-netlify="true"`). Hidden static form in `
 
 ### Tests
 
-- `test/*.test.ts` — unit tests (vitest): content data, event visibility, iCal, subscribe links, build output
-- `test/e2e/` — Playwright e2e (`site.spec.js`) and axe accessibility (`a11y.spec.ts`)
+- `test/*.test.ts` - unit tests (vitest): content data, event visibility, iCal, subscribe links, build output
+- `test/e2e/` - Playwright e2e (`site.spec.js`) and axe accessibility (`a11y.spec.ts`)
