@@ -1,7 +1,7 @@
 export async function GET() {
     const body = `# Soundry
 
-> Omaha's experimental music education workshops — pioneering workshops throughout the Midwest emphasizing playing, listening, creating, and collaborative work.
+> Omaha's experimental music education workshops - pioneering workshops throughout the Midwest emphasizing playing, listening, creating, and collaborative work.
 
 ## Pages
 

@@ -8,7 +8,7 @@ const dest = './public'
 const response = await favicons(source, {
     path: '/',
     appName: 'Soundry',
-    appDescription: "Soundry — Omaha's Experimental Music Education Workshops",
+    appDescription: "Soundry - Omaha's Experimental Music Education Workshops",
     background: '#e6dcc3',
     theme_color: '#6e3226',
     icons: {
