@@ -10,7 +10,7 @@ const ROOT = join(__dirname, '..')
 // Build smoke test
 // ---------------------------------------------------------------------------
 //
-// Asserts against dist/ rather than building it itself — matches
+// Asserts against dist/ rather than building it itself - matches
 // queeromaha's and synthomaha's test/build.test.ts. Every caller of
 // test:unit (test, test:push, voidflow's CI) already runs `bun run build`
 // first.
@@ -20,7 +20,7 @@ describe('astro build', () => {
         const distDir = join(ROOT, 'dist')
         expect(
             existsSync(distDir),
-            'dist/ not found — run `bun run build` before this test',
+            'dist/ not found - run `bun run build` before this test',
         ).toBe(true)
 
         const entries = readdirSync(distDir)

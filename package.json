@@ -2,7 +2,7 @@
     "name": "omahasoundry.com",
     "type": "module",
     "version": "2.0.0",
-    "description": "Soundry — Omaha's Experimental Music Education Workshops",
+    "description": "Soundry - Omaha's Experimental Music Education Workshops",
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",

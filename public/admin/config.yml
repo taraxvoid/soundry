@@ -1,4 +1,4 @@
-# DecapCMS config — uses DecapBridge PKCE auth (Netlify Identity was deprecated 2025)
+# DecapCMS config - uses DecapBridge PKCE auth (Netlify Identity was deprecated 2025)
 # Register at https://decapbridge.com to get your site-specific auth endpoints,
 # then replace the placeholder UUIDs below.
 
@@ -63,7 +63,7 @@ collections:
           widget: string,
           required: false,
           pattern: ['^([01][0-9]|2[0-3]):[0-5][0-9]$', 'Use 24h HH:MM format, e.g. 19:30'],
-          hint: '24h format, e.g. 19:30 — defaults to 90 min after start if omitted',
+          hint: '24h format, e.g. 19:30 - defaults to 90 min after start if omitted',
         }
       - { name: location, label: Location, widget: string }
       - { name: description, label: Description, widget: text }

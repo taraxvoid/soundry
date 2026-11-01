@@ -5,14 +5,14 @@ Soundry is a static Astro site for Omaha's experimental music education workshop
 Domain: `https://soundryomaha.org`
 
 ## Architecture
-- `src/layouts/Base.astro` — HTML shell, sticky nav, footer, skip link, back-to-top
-- `src/pages/index.astro` — home: hero, event calendar, email signup, donate, Instagram
-- `src/components/EventCalendar.astro` — upcoming events from content collection
-- `src/components/EventSubscribe.astro` — calendar subscribe links (Google Calendar, webcal)
-- `netlify/functions/submission-created.ts` — forwards `email-signup` submissions to Buttondown
-- `src/content/events/*.yaml` — event data validated by `src/content.config.ts`
-- `src/utils/ical.ts` — `.ics` generation for feed and per-event routes
-- `src/utils/eventVisibility.ts` — hides past events on the home page calendar
+- `src/layouts/Base.astro` - HTML shell, sticky nav, footer, skip link, back-to-top
+- `src/pages/index.astro` - home: hero, event calendar, email signup, donate, Instagram
+- `src/components/EventCalendar.astro` - upcoming events from content collection
+- `src/components/EventSubscribe.astro` - calendar subscribe links (Google Calendar, webcal)
+- `netlify/functions/submission-created.ts` - forwards `email-signup` submissions to Buttondown
+- `src/content/events/*.yaml` - event data validated by `src/content.config.ts`
+- `src/utils/ical.ts` - `.ics` generation for feed and per-event routes
+- `src/utils/eventVisibility.ts` - hides past events on the home page calendar
 - Tests: `vitest` for unit/data/ical/build, `playwright` for e2e and a11y
 
 ## Review Checklist
