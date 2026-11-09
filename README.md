@@ -162,3 +162,9 @@ bun run changelog:unreleased
 - `commit_preprocessors` - rewrites `(#123)` issue references into GitHub links
 - `postprocessors` - replaces the `<REPO>` placeholder with the actual GitHub URL
 - `topo_order_commits = true` - orders commits topologically within each release
+
+## License
+
+Source code is licensed under the [MIT License](LICENSE). Content (images,
+photos, logos, event and program text under `public/` and `src/content/`) is
+not covered by it and is not available for reuse. See [NOTICE](NOTICE).
