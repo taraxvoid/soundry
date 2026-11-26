@@ -6,4 +6,4 @@ remotes:
   - git_url: https://github.com/taraxvoid/voidflow
     ref: v0.16.0
     configs:
-      - lefthook/site.yml
+      - lefthook/base.yml
