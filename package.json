@@ -72,6 +72,7 @@
     "author": "Tara <1711810+taraxvoid@users.noreply.github.com>",
     "license": "MIT",
     "overrides": {
-        "basic-ftp": "6.2.6"
+        "basic-ftp": "6.2.6",
+        "@emnapi/runtime": "1.11.3"
     }
 }
