@@ -1,5 +1,6 @@
 ---
 import EventCalendar from '../components/EventCalendar.astro'
+import ShareYourStory from '../components/ShareYourStory.astro'
 import Base from '../layouts/Base.astro'
 ---
 
@@ -19,6 +20,9 @@ import Base from '../layouts/Base.astro'
 
   <!-- Events Calendar -->
   <EventCalendar />
+
+  <!-- Share Your Story -->
+  <ShareYourStory />
 
   <!-- Email Signup -->
   <section class="section signup-section" id="signup">
@@ -106,41 +110,13 @@ import Base from '../layouts/Base.astro'
 </Base>
 
 <script>
-  // Email signup form with Netlify
-  const form = document.getElementById('signup-form') as HTMLFormElement | null
-  const submitBtn = document.getElementById('signup-submit') as HTMLButtonElement | null
-  const messageDiv = document.getElementById('signup-message')
+  import { bindNetlifyForm } from '../utils/netlifyForm'
 
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault()
-    if (!submitBtn || !messageDiv) return
-
-    submitBtn.disabled = true
-    const originalText = submitBtn.textContent
-    submitBtn.textContent = 'Subscribing...'
-    messageDiv.className = 'signup-message'
-
-    try {
-      const formData = new FormData(form)
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as unknown as Record<string, string>),
-      })
-
-      if (response.ok) {
-        messageDiv.className = 'signup-message success'
-        messageDiv.textContent = '✓ Successfully subscribed!'
-        form.reset()
-      } else {
-        throw new Error('Form submission failed')
-      }
-    } catch {
-      messageDiv.className = 'signup-message error'
-      messageDiv.textContent = '✗ An error occurred. Please try again.'
-    } finally {
-      submitBtn.disabled = false
-      submitBtn.textContent = originalText ?? 'Subscribe'
-    }
-  })
+  const form = document.querySelector<HTMLFormElement>('#signup-form')
+  if (form) {
+    bindNetlifyForm(form, {
+      pending: 'Subscribing...',
+      success: '✓ Successfully subscribed!',
+    })
+  }
 </script>
